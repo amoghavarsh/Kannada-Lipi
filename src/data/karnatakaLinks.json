@@ -1,0 +1,418 @@
+{
+    "categories": [
+        {
+            "id": "government",
+            "name": "ಸರ್ಕಾರಿ ಪೋರ್ಟಲ್",
+            "english": "Government Portals",
+            "icon": "🏛️"
+        },
+        {
+            "id": "exams",
+            "name": "ಪರೀಕ್ಷೆ / ನೇಮಕಾತಿ",
+            "english": "Exams & Recruitment",
+            "icon": "📝"
+        },
+        {
+            "id": "transport",
+            "name": "ಸಾರಿಗೆ",
+            "english": "Transport",
+            "icon": "🚌"
+        },
+        {
+            "id": "utilities",
+            "name": "ವಿದ್ಯುತ್ / ನೀರು / ಸೇವೆ",
+            "english": "Utilities & Services",
+            "icon": "💡"
+        },
+        {
+            "id": "education",
+            "name": "ಶಿಕ್ಷಣ",
+            "english": "Education",
+            "icon": "🎓"
+        },
+        {
+            "id": "health",
+            "name": "ಆರೋಗ್ಯ",
+            "english": "Health",
+            "icon": "🏥"
+        },
+        {
+            "id": "tourism",
+            "name": "ಪ್ರವಾಸೋದ್ಯಮ",
+            "english": "Tourism",
+            "icon": "✈️"
+        },
+        {
+            "id": "land",
+            "name": "ಭೂಮಿ / ಆಸ್ತಿ",
+            "english": "Land & Property",
+            "icon": "🏠"
+        },
+        {
+            "id": "finance",
+            "name": "ಹಣಕಾಸು / ತೆರಿಗೆ",
+            "english": "Finance & Tax",
+            "icon": "💰"
+        },
+        {
+            "id": "others",
+            "name": "ಇತರೆ",
+            "english": "Others",
+            "icon": "📌"
+        }
+    ],
+    "links": [
+        {
+            "name": "ಕರ್ನಾಟಕ ಸರ್ಕಾರ",
+            "english": "Karnataka Government",
+            "url": "https://karnataka.gov.in",
+            "icon": "🏛️",
+            "category": "government",
+            "desc": "ಕರ್ನಾಟಕ ರಾಜ್ಯ ಸರ್ಕಾರದ ಅಧಿಕೃತ ಪೋರ್ಟಲ್. ಎಲ್ಲಾ ಇಲಾಖೆಗಳ ಮಾಹಿತಿ ಮತ್ತು ಸೇವೆಗಳು."
+        },
+        {
+            "name": "BBMP (ಬೃಹತ್ ಬೆಂಗಳೂರು ಮಹಾನಗರ ಪಾಲಿಕೆ)",
+            "english": "BBMP - Bruhat Bengaluru Mahanagara Palike",
+            "url": "https://bbmp.gov.in",
+            "icon": "🏙️",
+            "category": "government",
+            "desc": "ಬೆಂಗಳೂರು ನಗರ ಆಡಳಿತ — ಆಸ್ತಿ ತೆರಿಗೆ, ವ್ಯಾಪಾರ ಪರವಾನಗಿ, ಖಾತಾ, ಕಟ್ಟಡ ಅನುಮತಿ."
+        },
+        {
+            "name": "BDA (ಬೆಂಗಳೂರು ಅಭಿವೃದ್ಧಿ ಪ್ರಾಧಿಕಾರ)",
+            "english": "BDA - Bengaluru Development Authority",
+            "url": "https://bdabangalore.org",
+            "icon": "🏗️",
+            "category": "government",
+            "desc": "ಬೆಂಗಳೂರು ನಗರ ಯೋಜನೆ, ನಿವೇಶನ ಹಂಚಿಕೆ, ಮಾಸ್ಟರ್ ಪ್ಲಾನ್ ಮಾಹಿತಿ."
+        },
+        {
+            "name": "ಸೇವಾ ಸಿಂಧು",
+            "english": "Seva Sindhu - e-Services",
+            "url": "https://sevasindhu.karnataka.gov.in",
+            "icon": "📋",
+            "category": "government",
+            "desc": "ಸರ್ಕಾರಿ ಸೇವೆಗಳ ಏಕಗವಾಕ್ಷಿ — ಜಾತಿ, ಆದಾಯ ಪ್ರಮಾಣಪತ್ರ, ಹಿರಿಯ ನಾಗರಿಕ ಕಾರ್ಡ್, ಇತ್ಯಾದಿ."
+        },
+        {
+            "name": "ಕರ್ನಾಟಕ ಒನ್",
+            "english": "Karnataka One",
+            "url": "https://www.karnatakaone.gov.in",
+            "icon": "🖥️",
+            "category": "government",
+            "desc": "ಸರ್ಕಾರಿ ಬಿಲ್ ಪಾವತಿ, ಪ್ರಮಾಣಪತ್ರ, ಮತ್ತು ಸೇವೆಗಳ ಆನ್‌ಲೈನ್ ಪ್ಲಾಟ್‌ಫಾರ್ಮ್."
+        },
+        {
+            "name": "KPSC (ಕರ್ನಾಟಕ ಲೋಕಸೇವಾ ಆಯೋಗ)",
+            "english": "KPSC - Karnataka Public Service Commission",
+            "url": "https://kpsc.kar.nic.in",
+            "icon": "📝",
+            "category": "exams",
+            "desc": "KAS, FDA, SDA, ಗ್ರೂಪ್ A/B/C ಪರೀಕ್ಷೆಗಳು — ಅಧಿಸೂಚನೆ, ಅರ್ಜಿ, ಫಲಿತಾಂಶ."
+        },
+        {
+            "name": "KEA (ಕರ್ನಾಟಕ ಪರೀಕ್ಷಾ ಪ್ರಾಧಿಕಾರ)",
+            "english": "KEA - Karnataka Examinations Authority",
+            "url": "https://cetonline.karnataka.gov.in/kea",
+            "icon": "🎯",
+            "category": "exams",
+            "desc": "CET, PGCET, DCET ಪರೀಕ್ಷೆಗಳು — ಇಂಜಿನಿಯರಿಂಗ್, ಮೆಡಿಕಲ್ ಪ್ರವೇಶ."
+        },
+        {
+            "name": "KSEEB (SSLC ಫಲಿತಾಂಶ)",
+            "english": "KSEEB - Karnataka SSLC Board",
+            "url": "https://kseeb.karnataka.gov.in",
+            "icon": "📊",
+            "category": "exams",
+            "desc": "SSLC (10ನೇ ತರಗತಿ) ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶ, ಸಮಯ ಕೋಷ್ಟಕ, ಪಠ್ಯಕ್ರಮ."
+        },
+        {
+            "name": "PUE (PUC ಫಲಿತಾಂಶ)",
+            "english": "PUE - Pre-University Education",
+            "url": "https://pue.karnataka.gov.in",
+            "icon": "📚",
+            "category": "exams",
+            "desc": "PUC (12ನೇ ತರಗತಿ) ಫಲಿತಾಂಶ, ಪುನರ್ಮೌಲ್ಯಮಾಪನ, ಪ್ರವೇಶ ಮಾಹಿತಿ."
+        },
+        {
+            "name": "KSP (ಕರ್ನಾಟಕ ರಾಜ್ಯ ಪೊಲೀಸ್)",
+            "english": "KSP - Karnataka State Police",
+            "url": "https://ksp.karnataka.gov.in",
+            "icon": "👮",
+            "category": "exams",
+            "desc": "ಪೊಲೀಸ್ ನೇಮಕಾತಿ (PSI, PC, KSRP), ಅಪರಾಧ ದೂರು, FIR ನಕಲು."
+        },
+        {
+            "name": "TET / CTET ಕರ್ನಾಟಕ",
+            "english": "Karnataka TET",
+            "url": "https://schooleducation.kar.nic.in",
+            "icon": "👨‍🏫",
+            "category": "exams",
+            "desc": "ಶಿಕ್ಷಕರ ಅರ್ಹತಾ ಪರೀಕ್ಷೆ, ಶಿಕ್ಷಕರ ನೇಮಕಾತಿ ಮಾಹಿತಿ."
+        },
+        {
+            "name": "KSRTC (ಕರ್ನಾಟಕ ರಾಜ್ಯ ಸಾರಿಗೆ)",
+            "english": "KSRTC - Karnataka State Road Transport",
+            "url": "https://ksrtc.in",
+            "icon": "🚌",
+            "category": "transport",
+            "desc": "ಅಂತರ-ನಗರ ಬಸ್ ಟಿಕೆಟ್ ಬುಕಿಂಗ್, ಸಮಯ ಕೋಷ್ಟಕ, ಮಾರ್ಗ ಮಾಹಿತಿ."
+        },
+        {
+            "name": "BMTC (ಬೆಂಗಳೂರು ಸಾರಿಗೆ)",
+            "english": "BMTC - Bengaluru Metropolitan Transport",
+            "url": "https://mybmtc.karnataka.gov.in",
+            "icon": "🚍",
+            "category": "transport",
+            "desc": "ಬೆಂಗಳೂರು ನಗರ ಬಸ್ ಮಾರ್ಗಗಳು, ಬಸ್ ಪಾಸ್, ವೇಳಾಪಟ್ಟಿ."
+        },
+        {
+            "name": "ನಮ್ಮ ಮೆಟ್ರೋ",
+            "english": "Namma Metro - BMRCL",
+            "url": "https://english.bmrc.co.in",
+            "icon": "🚇",
+            "category": "transport",
+            "desc": "ಬೆಂಗಳೂರು ಮೆಟ್ರೋ ಮಾರ್ಗ, ಸಮಯ, ಟೋಕನ್ ಬೆಲೆ, ಹೊಸ ಮಾರ್ಗ ಯೋಜನೆ."
+        },
+        {
+            "name": "RTO ಕರ್ನಾಟಕ (ಸಾರಿಗೆ ಇಲಾಖೆ)",
+            "english": "RTO - Transport Department",
+            "url": "https://transport.karnataka.gov.in",
+            "icon": "🚗",
+            "category": "transport",
+            "desc": "ಚಾಲನಾ ಪರವಾನಗಿ (DL), ವಾಹನ ನೋಂದಣಿ (RC), ಪರೀಕ್ಷೆ ಬುಕಿಂಗ್."
+        },
+        {
+            "name": "ಕೆಂಪೇಗೌಡ ಅಂತಾರಾಷ್ಟ್ರೀಯ ವಿಮಾನ ನಿಲ್ದಾಣ",
+            "english": "Kempegowda International Airport (BLR)",
+            "url": "https://www.bengaluruairport.com",
+            "icon": "✈️",
+            "category": "transport",
+            "desc": "ವಿಮಾನ ವೇಳಾಪಟ್ಟಿ, ಟರ್ಮಿನಲ್ ಮಾಹಿತಿ, ಪಾರ್ಕಿಂಗ್, ಲೌಂಜ್."
+        },
+        {
+            "name": "BESCOM (ವಿದ್ಯುತ್ ಸರಬರಾಜು)",
+            "english": "BESCOM - Bengaluru Electricity Supply",
+            "url": "https://bescom.karnataka.gov.in",
+            "icon": "⚡",
+            "category": "utilities",
+            "desc": "ವಿದ್ಯುತ್ ಬಿಲ್ ಪಾವತಿ, ಹೊಸ ಸಂಪರ್ಕ, ದೂರು, ಮೀಟರ್ ಓದುವಿಕೆ."
+        },
+        {
+            "name": "HESCOM (ಹುಬ್ಬಳ್ಳಿ ವಿದ್ಯುತ್)",
+            "english": "HESCOM - Hubli Electricity Supply",
+            "url": "https://hescom.karnataka.gov.in",
+            "icon": "💡",
+            "category": "utilities",
+            "desc": "ಉತ್ತರ ಕರ್ನಾಟಕ ವಿದ್ಯುತ್ ಸರಬರಾಜು — ಬಿಲ್ ಪಾವತಿ, ಸಂಪರ್ಕ."
+        },
+        {
+            "name": "CESC (ಮೈಸೂರು ವಿದ್ಯುತ್)",
+            "english": "CESC - Chamundeshwari Electricity Supply",
+            "url": "https://cabordelec.karnataka.gov.in",
+            "icon": "🔌",
+            "category": "utilities",
+            "desc": "ಮೈಸೂರು ಪ್ರದೇಶದ ವಿದ್ಯುತ್ ಸರಬರಾಜು ಮತ್ತು ಬಿಲ್ ಪಾವತಿ."
+        },
+        {
+            "name": "BWSSB (ನೀರು ಸರಬರಾಜು)",
+            "english": "BWSSB - Bengaluru Water Supply",
+            "url": "https://bwssb.karnataka.gov.in",
+            "icon": "💧",
+            "category": "utilities",
+            "desc": "ಬೆಂಗಳೂರು ನೀರು ಬಿಲ್ ಪಾವತಿ, ಹೊಸ ಸಂಪರ್ಕ, ಕಾವೇರಿ ನೀರು ಯೋಜನೆ."
+        },
+        {
+            "name": "ಬೆಂಗಳೂರು ಗ್ಯಾಸ್ (GAIL)",
+            "english": "Bengaluru Gas / GAIL",
+            "url": "https://www.gailgas.com",
+            "icon": "🔥",
+            "category": "utilities",
+            "desc": "PNG (ಪೈಪ್ಡ್ ನ್ಯಾಚುರಲ್ ಗ್ಯಾಸ್) ಸಂಪರ್ಕ, ಬಿಲ್ ಪಾವತಿ."
+        },
+        {
+            "name": "ಕರ್ನಾಟಕ ವಿಶ್ವವಿದ್ಯಾಲಯ",
+            "english": "Karnatak University, Dharwad",
+            "url": "https://kud.ac.in",
+            "icon": "🎓",
+            "category": "education",
+            "desc": "ಧಾರವಾಡ ಕರ್ನಾಟಕ ವಿಶ್ವವಿದ್ಯಾಲಯ — ಪ್ರವೇಶ, ಪರೀಕ್ಷೆ, ಫಲಿತಾಂಶ."
+        },
+        {
+            "name": "ಬೆಂಗಳೂರು ವಿಶ್ವವಿದ್ಯಾಲಯ",
+            "english": "Bangalore University",
+            "url": "https://bangaloreuniversity.ac.in",
+            "icon": "🏫",
+            "category": "education",
+            "desc": "ಬೆಂಗಳೂರು ವಿಶ್ವವಿದ್ಯಾಲಯ — ಪದವಿ, ಸ್ನಾತಕೋತ್ತರ ಪ್ರವೇಶ ಮಾಹಿತಿ."
+        },
+        {
+            "name": "VTU (ವಿಶ್ವೇಶ್ವರಯ್ಯ ತಾಂತ್ರಿಕ ವಿವಿ)",
+            "english": "VTU - Visvesvaraya Technological University",
+            "url": "https://vtu.ac.in",
+            "icon": "⚙️",
+            "category": "education",
+            "desc": "ಇಂಜಿನಿಯರಿಂಗ್ ವಿಶ್ವವಿದ್ಯಾಲಯ — ಫಲಿತಾಂಶ, ಪಠ್ಯಕ್ರಮ, ಸಂಲಗ್ನ ಕಾಲೇಜು."
+        },
+        {
+            "name": "ಮೈಸೂರು ವಿಶ್ವವಿದ್ಯಾಲಯ",
+            "english": "University of Mysore",
+            "url": "https://uni-mysore.ac.in",
+            "icon": "🏛️",
+            "category": "education",
+            "desc": "ಮೈಸೂರು ವಿಶ್ವವಿದ್ಯಾಲಯ — ಭಾರತದ ಅತಿ ಹಳೆಯ ವಿವಿಗಳಲ್ಲಿ ಒಂದು."
+        },
+        {
+            "name": "RGUHS (ಆರೋಗ್ಯ ವಿಜ್ಞಾನ ವಿವಿ)",
+            "english": "RGUHS - Rajiv Gandhi University of Health Sciences",
+            "url": "https://rguhs.ac.in",
+            "icon": "🩺",
+            "category": "education",
+            "desc": "ವೈದ್ಯಕೀಯ, ದಂತ, ನರ್ಸಿಂಗ್ ಕೋರ್ಸ್ — ಫಲಿತಾಂಶ, ಪ್ರವೇಶ."
+        },
+        {
+            "name": "ಆರೋಗ್ಯ ಮತ್ತು ಕುಟುಂಬ ಕಲ್ಯಾಣ ಇಲಾಖೆ",
+            "english": "Health & Family Welfare Department",
+            "url": "https://karunadu.karnataka.gov.in/hfw",
+            "icon": "🏥",
+            "category": "health",
+            "desc": "ಸರ್ಕಾರಿ ಆಸ್ಪತ್ರೆ ಮಾಹಿತಿ, ಆರೋಗ್ಯ ಯೋಜನೆಗಳು, ಲಸಿಕೆ."
+        },
+        {
+            "name": "ಆಯುಷ್ಮಾನ್ ಭಾರತ - ಆರೋಗ್ಯ ಕರ್ನಾಟಕ",
+            "english": "Arogya Karnataka",
+            "url": "https://arogya.karnataka.gov.in",
+            "icon": "❤️",
+            "category": "health",
+            "desc": "ಉಚಿತ ಮತ್ತು ರಿಯಾಯಿತಿ ದರದ ಚಿಕಿತ್ಸೆ ಯೋಜನೆ, ಆಸ್ಪತ್ರೆ ಪಟ್ಟಿ."
+        },
+        {
+            "name": "108 ಆಂಬ್ಯುಲೆನ್ಸ್ ಸೇವೆ",
+            "english": "108 Ambulance Service",
+            "url": "https://emri.in",
+            "icon": "🚑",
+            "category": "health",
+            "desc": "ತುರ್ತು ಆಂಬ್ಯುಲೆನ್ಸ್ ಸೇವೆ — 108 ಕರೆ ಮಾಡಿ. ಉಚಿತ ಸೇವೆ."
+        },
+        {
+            "name": "ಕರ್ನಾಟಕ ಪ್ರವಾಸೋದ್ಯಮ",
+            "english": "Karnataka Tourism",
+            "url": "https://karnatakatourism.org",
+            "icon": "🗺️",
+            "category": "tourism",
+            "desc": "ಪ್ರವಾಸಿ ತಾಣಗಳು, ಹೋಟೆಲ್ ಬುಕಿಂಗ್, ಟೂರ್ ಪ್ಯಾಕೇಜ್, ಇವೆಂಟ್."
+        },
+        {
+            "name": "KSTDC (ಪ್ರವಾಸೋದ್ಯಮ ಅಭಿವೃದ್ಧಿ ನಿಗಮ)",
+            "english": "KSTDC - Tourism Development Corporation",
+            "url": "https://kstdc.co",
+            "icon": "🏨",
+            "category": "tourism",
+            "desc": "ಸರ್ಕಾರಿ ಟೂರ್ ಪ್ಯಾಕೇಜ್, ಹೋಟೆಲ್ ಬುಕಿಂಗ್, ಬಸ್ ಪ್ರವಾಸ."
+        },
+        {
+            "name": "ASI ಕರ್ನಾಟಕ (ಪುರಾತತ್ವ ಇಲಾಖೆ)",
+            "english": "ASI - Archaeological Survey of India",
+            "url": "https://asiindia.in",
+            "icon": "🏛️",
+            "category": "tourism",
+            "desc": "ಹಂಪಿ, ಪಟ್ಟದಕಲ್ಲು, ಬಾದಾಮಿ — ಸಂರಕ್ಷಿತ ಸ್ಮಾರಕಗಳ ಟಿಕೆಟ್ ಮತ್ತು ಮಾಹಿತಿ."
+        },
+        {
+            "name": "ಭೂಮಿ (ಭೂ ದಾಖಲೆ)",
+            "english": "Bhoomi - Land Records",
+            "url": "https://landrecords.karnataka.gov.in",
+            "icon": "📄",
+            "category": "land",
+            "desc": "RTC (ಪಹಣಿ), ಮ್ಯುಟೇಶನ್, ಭೂ ನಕ್ಷೆ — ಆನ್‌ಲೈನ್ ಭೂಮಿ ದಾಖಲೆ."
+        },
+        {
+            "name": "ಕಾವೇರಿ ಆನ್‌ಲೈನ್ (ಆಸ್ತಿ ನೋಂದಣಿ)",
+            "english": "Kaveri Online - Property Registration",
+            "url": "https://kaverionline.karnataka.gov.in",
+            "icon": "🏠",
+            "category": "land",
+            "desc": "ಆಸ್ತಿ ನೋಂದಣಿ, ಮಾರಾಟ ಒಪ್ಪಂದ, ಎನ್‌ಕಂಬರೆನ್ಸ್ ಪ್ರಮಾಣಪತ್ರ (EC)."
+        },
+        {
+            "name": "ಇ-ಸ್ವತ್ತು (ನಗರ ಆಸ್ತಿ)",
+            "english": "E-Swattu - Urban Property",
+            "url": "https://eswathu.karnataka.gov.in",
+            "icon": "🏘️",
+            "category": "land",
+            "desc": "ನಗರ ಪ್ರದೇಶದ ಆಸ್ತಿ ದಾಖಲೆ, ಖಾತಾ, ನಕ್ಷೆ."
+        },
+        {
+            "name": "ಇ-ಸ್ಟ್ಯಾಂಪ್",
+            "english": "E-Stamp - SHCIL",
+            "url": "https://www.shcilestamp.com",
+            "icon": "📑",
+            "category": "land",
+            "desc": "ಆನ್‌ಲೈನ್ ಸ್ಟ್ಯಾಂಪ್ ಡ್ಯೂಟಿ ಪಾವತಿ, ಇ-ಸ್ಟ್ಯಾಂಪ್ ಖರೀದಿ."
+        },
+        {
+            "name": "ವಾಣಿಜ್ಯ ತೆರಿಗೆ ಇಲಾಖೆ (GST)",
+            "english": "Commercial Tax - GST Karnataka",
+            "url": "https://gst.kar.nic.in",
+            "icon": "📊",
+            "category": "finance",
+            "desc": "GST ನೋಂದಣಿ, ರಿಟರ್ನ್ ಫೈಲಿಂಗ್, ವಾಣಿಜ್ಯ ತೆರಿಗೆ ಮಾಹಿತಿ."
+        },
+        {
+            "name": "ಖಜಾನೆ-2 (ಸರ್ಕಾರಿ ಹಣಕಾಸು)",
+            "english": "Khajane-2 - Treasury",
+            "url": "https://khajane2.karnataka.gov.in",
+            "icon": "🏦",
+            "category": "finance",
+            "desc": "ಸರ್ಕಾರಿ ನೌಕಕರ ವೇತನ, ಪಿಂಚಣಿ, ಖಜಾನೆ ಸೇವೆಗಳು."
+        },
+        {
+            "name": "ಇ-ಪ್ರೊಕ್ಯೂರ್‌ಮೆಂಟ್",
+            "english": "E-Procurement Karnataka",
+            "url": "https://eproc.karnataka.gov.in",
+            "icon": "📦",
+            "category": "finance",
+            "desc": "ಸರ್ಕಾರಿ ಟೆಂಡರ್, ಖರೀದಿ, ಇ-ಹರಾಜು — ಆನ್‌ಲೈನ್ ಪೋರ್ಟಲ್."
+        },
+        {
+            "name": "ಕನ್ನಡ ಮತ್ತು ಸಂಸ್ಕೃತಿ ಇಲಾಖೆ",
+            "english": "Kannada & Culture Department",
+            "url": "https://kannadasiri.karnataka.gov.in",
+            "icon": "📖",
+            "category": "others",
+            "desc": "ಕನ್ನಡ ಅಭಿವೃದ್ಧಿ, ಪ್ರಶಸ್ತಿ, ಕನ್ನಡ ತಂತ್ರಾಂಶ, ಸಾಹಿತ್ಯ ಕಾರ್ಯಕ್ರಮ."
+        },
+        {
+            "name": "ಕರ್ನಾಟಕ ಹಾಲು ಮಹಾಮಂಡಳ (KMF)",
+            "english": "KMF - Nandini Milk",
+            "url": "https://kmfnandini.coop",
+            "icon": "🥛",
+            "category": "others",
+            "desc": "ನಂದಿನಿ ಹಾಲು ಉತ್ಪನ್ನಗಳು, ಡೈರಿ ಮಾಹಿತಿ, ಸಹಕಾರ ಸಂಘ."
+        },
+        {
+            "name": "ಕರ್ನಾಟಕ ರಾಜ್ಯ ಚುನಾವಣಾ ಆಯೋಗ",
+            "english": "Karnataka State Election Commission",
+            "url": "https://ksec.karnataka.gov.in",
+            "icon": "🗳️",
+            "category": "others",
+            "desc": "ಮತದಾರರ ಪಟ್ಟಿ, ಮತದಾರರ ಗುರುತಿನ ಚೀಟಿ, ಚುನಾವಣಾ ಮಾಹಿತಿ."
+        },
+        {
+            "name": "ಕರ್ನಾಟಕ ವಿದ್ಯುತ್ ನಿಯಂತ್ರಣ ಆಯೋಗ",
+            "english": "KERC - Electricity Regulatory Commission",
+            "url": "https://kerc.karnataka.gov.in",
+            "icon": "⚖️",
+            "category": "others",
+            "desc": "ವಿದ್ಯುತ್ ದರ ನಿಗದಿ, ಗ್ರಾಹಕರ ದೂರು, ನಿಯಮಗಳು."
+        },
+        {
+            "name": "ಕರ್ನಾಟಕ ಮಾಹಿತಿ ಆಯೋಗ (RTI)",
+            "english": "Karnataka Information Commission - RTI",
+            "url": "https://kic.karnataka.gov.in",
+            "icon": "📢",
+            "category": "others",
+            "desc": "ಮಾಹಿತಿ ಹಕ್ಕು (RTI) ಅರ್ಜಿ, ಮೇಲ್ಮನವಿ, ಆದೇಶಗಳು."
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+.embed-page {
+    min-height: 100vh;
+    padding: var(--gap-md, 12px);
+    background: var(--bg-base, #fff);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Embeds shouldn't carry the big top margin the homepage editor uses. */
+.embed-page .code-editor-section {
+    margin-top: 0;
+    flex: 1;
+}
+
+.embed-credit {
+    display: inline-block;
+    margin-top: var(--gap-sm, 8px);
+    align-self: center;
+    font-size: 0.8rem;
+    color: var(--text-muted, #888);
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+.embed-credit:hover {
+    opacity: 1;
+    text-decoration: underline;
+}

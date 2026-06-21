@@ -1,0 +1,7 @@
+# KannadaLipi - Kannada Programming Language
+# https://www.k-lipi.in
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.k-lipi.in/sitemap.xml

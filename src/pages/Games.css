@@ -1,0 +1,205 @@
+.games-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--gap-lg);
+}
+
+.games-content {
+    margin-top: var(--gap-lg);
+}
+
+/* Game selector tabs */
+.games-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap-md);
+    margin-bottom: var(--gap-lg);
+}
+
+.game-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: var(--gap-md);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-glass-color);
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    cursor: pointer;
+    text-align: left;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.game-tab:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--k-yellow);
+}
+
+.game-tab.active {
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--k-yellow), var(--k-red));
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(215, 25, 32, 0.25);
+}
+
+.game-tab-label {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.game-tab-desc {
+    font-size: 0.78rem;
+    opacity: 0.85;
+}
+
+/* Game panel */
+.game-panel {
+    padding: var(--gap-xl);
+    border-radius: var(--radius-lg);
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.game-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+}
+
+.game-center {
+    align-items: center;
+    text-align: center;
+}
+
+.game-progress {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.game-question-label {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.game-code {
+    background: var(--bg-base);
+    border: 1px solid var(--border-glass-color);
+    border-left: 4px solid var(--k-yellow);
+    border-radius: var(--radius-md);
+    padding: var(--gap-md);
+    font-size: 1.1rem;
+    overflow-x: auto;
+    color: var(--text-primary);
+}
+
+/* Multiple-choice options */
+.game-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap-sm);
+}
+
+.game-option {
+    padding: var(--gap-md);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-glass-color);
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+
+.game-option:hover:not(:disabled) {
+    border-color: var(--k-yellow);
+    transform: translateY(-1px);
+}
+
+.game-option:disabled {
+    cursor: default;
+}
+
+.game-option.correct {
+    background: rgba(46, 160, 67, 0.15);
+    border-color: #2ea043;
+    color: var(--text-primary);
+}
+
+.game-option.wrong {
+    background: rgba(215, 25, 32, 0.12);
+    border-color: var(--k-red);
+    color: var(--text-primary);
+}
+
+.game-next {
+    align-self: flex-end;
+    margin-top: var(--gap-sm);
+}
+
+/* Result screen */
+.game-result {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-md);
+}
+
+.game-result-icon {
+    color: var(--k-yellow);
+    filter: drop-shadow(0 2px 6px rgba(215, 25, 32, 0.3));
+}
+
+.game-score {
+    font-size: 1.15rem;
+    color: var(--text-primary);
+}
+
+/* Typing drill */
+.typing-target {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    padding: var(--gap-lg);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(215, 25, 32, 0.08));
+    border: 1px dashed var(--k-red);
+    color: var(--text-primary);
+    letter-spacing: 1px;
+}
+
+.typing-input {
+    padding: var(--gap-md);
+    font-size: 1.25rem;
+    text-align: center;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--border-glass-color);
+    background: var(--bg-base);
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+.typing-input:focus {
+    border-color: var(--k-yellow);
+}
+
+.typing-hint {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .games-tabs { grid-template-columns: 1fr; }
+    .game-options { grid-template-columns: 1fr; }
+    .game-panel { padding: var(--gap-lg); }
+    .typing-target { font-size: 1.5rem; }
+}

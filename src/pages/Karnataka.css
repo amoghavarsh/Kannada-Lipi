@@ -1,0 +1,774 @@
+/* Karnataka Page Styles - Wiki Style */
+.karnataka-page {
+    padding: 0;
+    max-width: 100%;
+    margin: 0 auto;
+    background: var(--bg-surface);
+    min-height: 100vh;
+}
+
+/* Wiki Header */
+.wiki-header {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 0, 0, 0.05));
+    border-bottom: 1px solid var(--border-glass-color);
+    padding: var(--gap-xl) var(--gap-lg);
+    text-align: center;
+}
+
+.wiki-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--gap-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-sm);
+}
+
+.wiki-title-icon {
+    font-size: 2rem;
+}
+
+.wiki-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Main Wiki Container */
+.docs-container {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 0;
+    align-items: flex-start;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Sidebar Navigation */
+.docs-sidebar {
+    position: sticky;
+    top: 80px;
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+    padding: var(--gap-lg) var(--gap-md);
+    background: var(--bg-surface-elevated);
+    border-right: 1px solid var(--border-glass-color);
+}
+
+.docs-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.docs-nav-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: var(--gap-sm) var(--gap-md);
+    margin-bottom: var(--gap-sm);
+    border-bottom: 1px solid var(--border-glass-color);
+}
+
+.docs-nav-subgroup {
+    margin: var(--gap-sm) 0;
+    padding-left: var(--gap-md);
+    border-left: 2px solid var(--k-yellow);
+}
+
+.docs-nav-subtitle {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: var(--gap-xs);
+    letter-spacing: 0.05em;
+    padding: var(--gap-xs) var(--gap-sm);
+}
+
+.docs-nav-link,
+.docs-nav-link-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: var(--gap-sm) var(--gap-md);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    position: relative;
+}
+
+.docs-nav-link:hover,
+.docs-nav-link-btn:hover {
+    background: rgba(var(--accent-rgb), 0.08);
+    color: var(--accent);
+}
+
+.docs-nav-link.active,
+.docs-nav-link-btn.active {
+    background: rgba(var(--accent-rgb), 0.12);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.docs-nav-link.active::before,
+.docs-nav-link-btn.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--k-yellow);
+    border-radius: 0 2px 2px 0;
+}
+
+/* Main Content Area */
+.docs-content {
+    padding: var(--gap-xl) var(--gap-xl);
+    min-height: calc(100vh - 80px);
+}
+
+/* Wiki Section */
+.docs-section {
+    padding: 0;
+    margin-bottom: var(--gap-xl);
+    background: transparent;
+    border: none;
+}
+
+.docs-section.panel {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--gap-lg);
+    padding-bottom: var(--gap-sm);
+    border-bottom: 2px solid var(--k-yellow);
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+}
+
+.section-title::before {
+    content: '§';
+    color: var(--k-yellow);
+    font-weight: 400;
+}
+
+/* Wiki Paragraph */
+.wiki-p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: var(--gap-lg);
+    text-align: justify;
+}
+
+/* Infobox - Wikipedia Style */
+.wiki-infobox {
+    float: right;
+    width: 280px;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-glass-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin: 0 0 var(--gap-lg) var(--gap-lg);
+    font-size: 0.85rem;
+    box-shadow: var(--shadow-md);
+}
+
+.infobox-header {
+    background: linear-gradient(135deg, var(--k-yellow), #e6b800);
+    color: #1a1a1a;
+    text-align: center;
+    padding: var(--gap-md);
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.infobox-image {
+    padding: var(--gap-md);
+    text-align: center;
+    background: rgba(var(--accent-rgb), 0.03);
+    border-bottom: 1px solid var(--border-glass-color);
+}
+
+.flag-image {
+    width: 120px;
+    height: 80px;
+    background: linear-gradient(to bottom, var(--k-yellow) 50%, var(--k-red) 50%);
+    margin: 0 auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.infobox-caption {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: var(--gap-sm);
+    font-style: italic;
+}
+
+.infobox-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.infobox-table th,
+.infobox-table td {
+    padding: var(--gap-sm) var(--gap-md);
+    text-align: left;
+    border-bottom: 1px solid var(--border-glass-color);
+    vertical-align: top;
+}
+
+.infobox-table th {
+    background: rgba(var(--accent-rgb), 0.05);
+    font-weight: 600;
+    color: var(--text-primary);
+    width: 35%;
+    font-size: 0.8rem;
+}
+
+.infobox-table td {
+    color: var(--text-secondary);
+}
+
+.infobox-table tr:last-child th,
+.infobox-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Fast Facts Box */
+.fast-facts {
+    background: rgba(var(--accent-rgb), 0.03);
+    border: 1px solid var(--border-glass-color);
+    border-left: 4px solid var(--k-yellow);
+    border-radius: var(--radius-md);
+    padding: var(--gap-lg);
+    margin: var(--gap-lg) 0;
+}
+
+.fast-facts h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--gap-md);
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+}
+
+.fast-facts ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-sm) var(--gap-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.fast-facts li {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--gap-xs);
+}
+
+/* Symbols Grid */
+.symbols-grid,
+.persons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--gap-md);
+    margin-top: var(--gap-lg);
+}
+
+.symbol-card,
+.person-card {
+    text-align: center;
+    padding: var(--gap-lg);
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-glass-color);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.symbol-card:hover,
+.person-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--k-yellow);
+    box-shadow: var(--shadow-md);
+}
+
+.symbol-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--gap-sm);
+    display: block;
+}
+
+.symbol-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+/* Person Card */
+.person-card {
+    overflow: hidden;
+    padding: 0;
+}
+
+.person-header {
+    background: linear-gradient(135deg, var(--k-yellow), var(--k-red));
+    padding: var(--gap-lg);
+}
+
+.person-avatar {
+    width: 56px;
+    height: 56px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--k-red);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.person-body {
+    padding: var(--gap-md);
+}
+
+.person-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--gap-xs);
+    font-size: 0.95rem;
+}
+
+/* Sub Places Grid */
+.sub-places-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--gap-md);
+    margin-top: var(--gap-lg);
+}
+
+.sub-place {
+    padding: var(--gap-lg);
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-glass-color);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.sub-place:hover {
+    border-color: var(--k-yellow);
+    box-shadow: var(--shadow-sm);
+}
+
+.sub-place strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--k-red);
+    margin-bottom: var(--gap-sm);
+}
+
+/* Timeline */
+.timeline-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+    margin-top: var(--gap-lg);
+}
+
+.timeline-item {
+    padding: var(--gap-md) var(--gap-lg);
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-glass-color);
+    border-left: 4px solid var(--k-yellow);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    transition: all 0.2s ease;
+}
+
+.timeline-item:hover {
+    transform: translateX(4px);
+    border-color: var(--k-yellow);
+    box-shadow: var(--shadow-sm);
+}
+
+.timeline-item strong {
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+}
+
+/* Quiz Section */
+.quiz-card {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-glass-color);
+    border-radius: var(--radius-lg);
+    padding: var(--gap-xl);
+}
+
+.quiz-card h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--gap-lg);
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+}
+
+.quiz-option {
+    display: block;
+    width: 100%;
+    padding: var(--gap-md) var(--gap-lg);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-glass-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.95rem;
+    transition: all 0.15s ease;
+}
+
+.quiz-option:hover {
+    border-color: var(--accent);
+    background: rgba(var(--accent-rgb), 0.05);
+}
+
+.quiz-feedback {
+    margin-top: var(--gap-md);
+    padding: var(--gap-md);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-glass-color);
+}
+
+/* Wiki Quote */
+.wiki-section {
+    margin-top: var(--gap-xl);
+    padding-top: var(--gap-lg);
+    border-top: 1px solid var(--border-glass-color);
+}
+
+.wiki-h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--gap-md);
+    padding-bottom: var(--gap-sm);
+    border-bottom: 2px solid var(--k-yellow);
+    display: inline-block;
+}
+
+.wiki-quote {
+    border-left: 4px solid var(--k-yellow);
+    padding: var(--gap-lg) var(--gap-xl);
+    background: rgba(255, 215, 0, 0.05);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    margin-top: var(--gap-md);
+}
+
+.wiki-quote p {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: var(--gap-sm);
+    line-height: 1.7;
+}
+
+.wiki-quote cite {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Floating Fact Button */
+.floating-fact {
+    position: fixed;
+    bottom: var(--gap-xl);
+    right: var(--gap-xl);
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--k-yellow), var(--k-red));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    z-index: 100;
+    transition: all 0.2s ease;
+    font-size: 1.5rem;
+    border: none;
+}
+
+.floating-fact:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 24px rgba(255, 215, 0, 0.3);
+}
+
+.fact-bubble {
+    position: fixed;
+    bottom: 100px;
+    right: var(--gap-xl);
+    width: 320px;
+    background: var(--bg-surface);
+    padding: var(--gap-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--k-yellow);
+    box-shadow: var(--shadow-lg);
+    z-index: 100;
+}
+
+.fact-bubble h4 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--gap-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+}
+
+.fact-bubble p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--gap-md);
+}
+
+/* ─── Mobile sidebar + overlay (hidden on desktop) ─── */
+
+.karnataka-mobile-overlay {
+    display: none;
+}
+
+.karnataka-sidebar-portal {
+    display: none;
+}
+
+/* Mobile Navigation Toggle */
+.mobile-nav-toggle {
+    display: none;
+    position: fixed;
+    bottom: var(--gap-lg);
+    left: var(--gap-lg);
+    width: 48px;
+    height: 48px;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-glass-color);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: var(--shadow-md);
+    font-size: 1.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .docs-container {
+        grid-template-columns: 220px 1fr;
+    }
+
+    .docs-content {
+        padding: var(--gap-lg);
+    }
+
+    .wiki-infobox {
+        width: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .karnataka-page {
+        padding-top: 0;
+    }
+
+    .wiki-header {
+        padding: var(--gap-lg) var(--gap-md);
+    }
+
+    .wiki-title {
+        font-size: 1.75rem;
+    }
+
+    /* Single-column layout on mobile */
+    .docs-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Hide the desktop sidebar */
+    .docs-sidebar-desktop {
+        display: none;
+    }
+
+    /* Show mobile overlay */
+    .karnataka-mobile-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9997;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+    }
+
+    .karnataka-mobile-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Show mobile sidebar — slides in from the left */
+    .karnataka-sidebar-portal {
+        display: block;
+        position: fixed;
+        left: -280px;
+        top: 0;
+        height: 100vh;
+        height: 100dvh;
+        width: 280px;
+        z-index: 9998;
+        transition: left 0.3s ease;
+        border-right: 1px solid var(--border-glass-color);
+        background: var(--bg-surface-elevated);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: var(--gap-lg) var(--gap-md);
+    }
+
+    .karnataka-sidebar-portal.mobile-open {
+        left: 0;
+    }
+
+    /* Show the hamburger toggle */
+    .mobile-nav-toggle {
+        display: flex;
+    }
+
+    .docs-content {
+        padding: var(--gap-md);
+    }
+
+    .wiki-infobox {
+        float: none;
+        width: 100%;
+        margin: 0 0 var(--gap-lg) 0;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+    }
+
+    .symbols-grid,
+    .persons-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sub-places-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fast-facts ul {
+        grid-template-columns: 1fr;
+    }
+
+    .floating-fact {
+        bottom: var(--gap-lg);
+        right: var(--gap-md);
+        width: 48px;
+        height: 48px;
+        font-size: 1.25rem;
+        z-index: 200;
+    }
+
+    .mobile-nav-toggle {
+        bottom: var(--gap-lg);
+        left: var(--gap-md);
+    }
+
+    .fact-bubble {
+        right: var(--gap-md);
+        left: var(--gap-md);
+        width: auto;
+        bottom: 90px;
+    }
+}
+
+@media (max-width: 480px) {
+    .symbols-grid,
+    .persons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quiz-card {
+        padding: var(--gap-md);
+    }
+
+    .wiki-quote {
+        padding: var(--gap-md);
+    }
+
+    .wiki-quote p {
+        font-size: 1rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .docs-sidebar,
+    .floating-fact,
+    .fact-bubble,
+    .mobile-nav-toggle,
+    .karnataka-sidebar-portal,
+    .karnataka-mobile-overlay {
+        display: none !important;
+    }
+
+    .docs-container {
+        grid-template-columns: 1fr;
+    }
+
+    .docs-content {
+        padding: 0;
+    }
+
+    .wiki-infobox {
+        float: right;
+        width: 200px;
+    }
+        }

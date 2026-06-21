@@ -1,0 +1,34 @@
+{
+  "name": "kannada-lipi",
+  "version": "2.0.0",
+  "description": "ಕನ್ನಡ ಲಿಪಿ - A programming language designed for Kannada speakers",
+  "author": "Amoghavarsh Patil",
+  "license": "MIT",
+  "keywords": [
+    "kannada",
+    "programming-language",
+    "karnataka",
+    "education",
+    "coding"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.4",
+    "canvas-confetti": "^1.9.4",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router-dom": "^7.13.0",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "lucide-react": "^0.575.0",
+    "recharts": "^3.7.0"
+  }
+}

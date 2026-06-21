@@ -1,0 +1,47 @@
+{
+  "name": "ಕನ್ನಡ ಲಿಪಿ - Kannada Programming Language",
+  "short_name": "ಕನ್ನಡ ಲಿಪಿ",
+  "description": "Karnataka's first programming language in Kannada. Learn to code in your mother tongue.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e1e2e",
+  "theme_color": "#FFD700",
+  "orientation": "any",
+  "scope": "/",
+  "lang": "kn",
+  "categories": [
+    "education",
+    "developer tools",
+    "programming"
+  ],
+  "icons": [
+    {
+      "src": "/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "ಕಲಿಯಿರಿ",
+      "short_name": "Learn",
+      "description": "Start learning Kannada programming",
+      "url": "/learn"
+    },
+    {
+      "name": "ಉದಾಹರಣೆಗಳು",
+      "short_name": "Examples",
+      "description": "View code examples",
+      "url": "/examples"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

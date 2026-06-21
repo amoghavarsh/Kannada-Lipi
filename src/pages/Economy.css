@@ -1,0 +1,180 @@
+.economy-page {
+    padding: 0;
+    background: var(--bg-surface);
+    min-height: 100vh;
+}
+
+.economy-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--gap-xl) var(--gap-lg);
+}
+
+/* Headline stat cards */
+.econ-highlights {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gap-md);
+    margin-bottom: var(--gap-xl);
+}
+
+.econ-highlight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--gap-lg) var(--gap-md);
+    border-radius: var(--radius-lg);
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-glass-color);
+    border-top: 3px solid var(--k-red);
+}
+
+.econ-highlight-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--k-red), #b0141a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.econ-highlight-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+/* Chart */
+.econ-chart-panel {
+    padding: var(--gap-lg);
+    margin-bottom: var(--gap-xl);
+}
+
+.econ-chart-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--gap-md);
+}
+
+/* Section heading */
+.econ-section-heading {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: var(--gap-lg);
+    color: var(--text-primary);
+}
+
+/* Sector cards */
+.econ-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--gap-lg);
+}
+
+.econ-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-glass-color);
+    border-radius: var(--radius-lg);
+    padding: var(--gap-lg);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.econ-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--k-yellow);
+}
+
+.econ-card-head {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+    margin-bottom: var(--gap-sm);
+}
+
+.econ-card-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.16), rgba(215, 25, 32, 0.1));
+}
+
+.econ-card-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.econ-contribution {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--k-red);
+    background: rgba(215, 25, 32, 0.1);
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: var(--gap-sm);
+}
+
+[data-theme="dark"] .econ-contribution { color: var(--k-yellow); background: rgba(255, 215, 0, 0.12); }
+
+.econ-desc {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin-bottom: var(--gap-md);
+    flex-grow: 1;
+}
+
+.econ-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+    padding-top: var(--gap-md);
+    border-top: 1px solid var(--border-glass-color);
+}
+
+.econ-meta-row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--gap-sm);
+    font-size: 0.83rem;
+    color: var(--text-secondary);
+}
+
+.econ-meta-row strong { color: var(--text-primary); }
+.econ-meta-icon { flex-shrink: 0; margin-top: 2px; color: var(--text-muted); }
+
+.econ-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.econ-chip {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: var(--bg-base);
+    border: 1px solid var(--border-glass-color);
+    color: var(--text-secondary);
+}
+
+@media (max-width: 700px) {
+    .econ-highlights { grid-template-columns: repeat(2, 1fr); }
+    .econ-grid { grid-template-columns: 1fr; }
+}

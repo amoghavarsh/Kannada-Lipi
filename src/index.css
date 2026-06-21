@@ -1,0 +1,457 @@
+/**
+ * KannadaLipi - Global Styles (React)
+ * Migrated from vanilla main.css
+ */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+    /* Karnataka Heritage Palette */
+    --k-yellow: #FFD700;
+    --k-red: #D71920;
+    --k-yellow-vibrant: hsl(51, 100%, 50%);
+    --k-red-vibrant: hsl(358, 79%, 47%);
+
+    /* Semantic Colors (Dark Theme Default) */
+    --bg-base: hsl(240, 21%, 12%);
+    --bg-surface: hsl(240, 21%, 15%);
+    --bg-surface-elevated: hsl(240, 21%, 18%);
+    --bg-glass: hsla(240, 21%, 15%, 0.7);
+
+    --text-primary: hsl(0, 0%, 95%);
+    --text-secondary: hsl(240, 10%, 75%);
+    --text-muted: hsl(240, 10%, 50%);
+
+    --accent: var(--k-yellow-vibrant);
+    --accent-glow: hsla(51, 100%, 50%, 0.3);
+
+    --success: hsl(142, 71%, 45%);
+    --error: hsl(0, 84%, 60%);
+    --warning: hsl(38, 92%, 50%);
+
+    /* Syntax Highlighting */
+    --hl-keyword: hsl(286, 60%, 67%);
+    --hl-func: hsl(207, 82%, 66%);
+    --hl-str: hsl(95, 38%, 62%);
+    --hl-num: hsl(29, 54%, 61%);
+    --hl-comment: hsl(220, 10%, 40%);
+
+    /* Spacing & Sizing */
+    --gap-xs: 4px;
+    --gap-sm: 8px;
+    --gap-md: 16px;
+    --gap-lg: 24px;
+    --gap-xl: 40px;
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 32px;
+
+    /* Effects */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+    --glass-blur: 12px;
+    --border-glass: 1px solid rgba(255, 255, 255, 0.08);
+    --border-glass-color: rgba(255, 255, 255, 0.08);
+
+    /* Wiki Accents */
+    --wiki-header: #a2a9b1;
+    --wiki-bg: #f8f9fa;
+    --wiki-border: #c8ccd1;
+
+    /* Fonts */
+    --font-main: 'Outfit', 'Noto Sans Kannada', sans-serif;
+    --font-mono: 'Fira Code', 'Noto Sans Kannada', monospace;
+    --font-serif: 'Noto Serif Kannada', serif;
+}
+
+[data-theme="light"] {
+    --bg-base: hsl(0, 0%, 98%);
+    --bg-surface: hsl(0, 0%, 100%);
+    --bg-surface-elevated: hsl(0, 0%, 94%);
+    --bg-glass: hsla(0, 0%, 100%, 0.8);
+
+    --text-primary: hsl(240, 20%, 15%);
+    --text-secondary: hsl(240, 10%, 35%);
+    --text-muted: hsl(240, 10%, 55%);
+
+    --border-glass: 1px solid rgba(0, 0, 0, 0.08);
+    --border-glass-color: rgba(0, 0, 0, 0.08);
+    --accent-glow: hsla(51, 100%, 50%, 0.15);
+
+    --wiki-bg: #ffffff;
+    --wiki-border: #a2a9b1;
+}
+
+/* Base Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+}
+
+::selection {
+    background: rgba(255, 215, 0, 0.3);
+    color: var(--text-primary);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--k-yellow), var(--k-red));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--k-yellow);
+}
+
+/* Decorative Background Elements */
+.orb {
+    position: fixed;
+    width: 60vh;
+    height: 60vh;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.4;
+    animation: floatOrb 15s infinite ease-in-out;
+}
+
+[data-theme='dark'] .orb {
+    opacity: 0.15;
+}
+
+.orb-1 {
+    top: -20vh;
+    right: -10vw;
+    background: radial-gradient(circle, hsla(51, 100%, 50%, 0.4) 0%, transparent 70%);
+}
+
+.orb-2 {
+    bottom: -20vh;
+    left: -10vw;
+    background: radial-gradient(circle, hsla(356, 80%, 47%, 0.3) 0%, transparent 70%);
+    animation-delay: -5s;
+}
+
+@keyframes floatOrb {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+}
+
+.gradient-title {
+    background: linear-gradient(135deg, var(--k-yellow), var(--k-red));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Common Components */
+.panel {
+    background: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    border: var(--border-glass);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+/* Shared polished card hover — opt-in via .card-hover on any card */
+.card-hover {
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--k-yellow);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-sm);
+    padding: 10px 22px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    border: 1px solid transparent;
+    text-decoration: none;
+}
+
+/* Keyboard-accessible focus ring in flag yellow */
+.btn:focus-visible {
+    outline: 2px solid var(--k-yellow);
+    outline-offset: 2px;
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--k-yellow), #f0c000);
+    color: black;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+}
+
+.btn-secondary {
+    background: var(--bg-surface-elevated);
+    color: var(--text-primary);
+    border: var(--border-glass);
+}
+
+.btn-secondary:hover {
+    background: var(--bg-surface);
+    border-color: var(--text-muted);
+}
+
+.btn-accent {
+    background: linear-gradient(135deg, var(--k-red), #b0141a);
+    color: white;
+    box-shadow: 0 4px 15px rgba(215, 25, 32, 0.2);
+}
+
+.btn-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(215, 25, 32, 0.3);
+}
+
+.btn-sm {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+}
+
+/* Typography Utilities */
+.text-center {
+    text-align: center;
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.hero-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    max-width: 750px;
+    margin: 0 auto var(--gap-xl);
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: var(--gap-md);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: var(--gap-md);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--gap-sm);
+}
+
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-in {
+    animation: fadeInUp 0.3s ease;
+}
+
+/* Page Header (shared across pages) */
+.page-header {
+    position: relative;
+    background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.08), rgba(var(--accent-rgb), 0.02));
+    border-bottom: 1px solid var(--border-glass-color);
+    padding: var(--gap-xl) var(--gap-lg);
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Karnataka flag stripe across the top of every page header */
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--k-yellow), var(--k-red));
+}
+
+.page-header-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--gap-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-sm);
+}
+
+/* Icon sits in a soft flag-tinted badge */
+.page-header-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    color: var(--k-red);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.18), rgba(215, 25, 32, 0.12));
+    box-shadow: var(--shadow-sm);
+}
+
+.page-header-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* No Results State (shared) */
+.no-results {
+    text-align: center;
+    padding: var(--gap-xl);
+    color: var(--text-muted);
+}
+
+.no-results-icon {
+    font-size: 3rem;
+    margin-bottom: var(--gap-md);
+}
+
+.no-results h3 {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--gap-sm);
+}
+
+.wiki-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+}
+
+.wiki-table th {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-glass-color);
+    padding: 10px;
+    text-align: left;
+}
+
+.wiki-table td {
+    border: 1px solid var(--border-glass-color);
+    padding: 10px;
+}
+
+.wiki-table tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .wiki-table tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.wiki-quote {
+    border-left: 4px solid var(--k-red);
+    padding: 15px 25px;
+    background: var(--bg-surface-elevated);
+    margin: 1.5rem 0;
+    font-style: italic;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+
+/* Width utility */
+.w-full {
+    width: 100%;
+}
+
+.btn-lg {
+    padding: 14px 32px;
+    font-size: 1.1rem;
+}
+
+/* App layout */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+}
+
+/* Accent RGB for rgba() usage */
+:root {
+    --accent-rgb: 255, 215, 0;
+}
+
+[data-theme="light"] {
+    --accent-rgb: 255, 215, 0;
+}
