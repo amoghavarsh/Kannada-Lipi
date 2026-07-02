@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { NavLink } from 'react-router-dom';
-import { Link, Sparkles, Landmark, BarChart3, ChevronDown, HelpCircle, IndianRupee } from 'lucide-react';
+import { Link, Sparkles, Landmark, ChevronDown, HelpCircle, IndianRupee, MapPin, GraduationCap, Building2 } from 'lucide-react';
 import './Header.css';
 
 const Header = () => {
@@ -38,6 +38,7 @@ const Header = () => {
         <>
             <NavLink to="/" className="nav-link" onClick={closeMenu}>ಮುಖಪುಟ</NavLink>
             <NavLink to="/learn" className="nav-link" onClick={closeMenu}>ಕಲಿಯಿರಿ</NavLink>
+            <NavLink to="/challenge" className="nav-link" onClick={closeMenu}>🔥 ಇಂದಿನ ಸವಾಲು</NavLink>
             <NavLink to="/examples" className="nav-link" onClick={closeMenu}>ಉದಾಹರಣೆಗಳು</NavLink>
             <NavLink to="/games" className="nav-link" onClick={closeMenu}>ಆಟಗಳು</NavLink>
             <NavLink to="/help" className="nav-link" onClick={closeMenu}>ಸಹಾಯ</NavLink>
@@ -51,8 +52,10 @@ const Header = () => {
             <NavLink to="/karnataka" className="nav-link nav-link-special" onClick={closeMenu}>ಕರ್ನಾಟಕ</NavLink>
             <NavLink to="/wonders" className="nav-link nav-link-special" onClick={closeMenu}><Sparkles size={15} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ಅದ್ಭುತಗಳು</NavLink>
             <NavLink to="/schemes" className="nav-link nav-link-special" onClick={closeMenu}><Landmark size={15} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ಯೋಜನೆಗಳು</NavLink>
-            <NavLink to="/districts" className="nav-link nav-link-special" onClick={closeMenu}><BarChart3 size={15} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ಜಿಲ್ಲೆಗಳು</NavLink>
+            <NavLink to="/districts" className="nav-link nav-link-special" onClick={closeMenu}><MapPin size={15} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ಜಿಲ್ಲೆಗಳು</NavLink>
             <NavLink to="/economy" className="nav-link nav-link-special" onClick={closeMenu}><IndianRupee size={15} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ಆರ್ಥಿಕತೆ</NavLink>
+            <NavLink to="/student-resources" className="nav-link nav-link-special" onClick={closeMenu}><GraduationCap size={15} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ವಿದ್ಯಾರ್ಥಿ</NavLink>
+            <NavLink to="/services" className="nav-link nav-link-special" onClick={closeMenu}><Building2 size={15} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ಇ-ಸೇವೆಗಳು</NavLink>
             <NavLink to="/quiz" className="nav-link nav-link-special" onClick={closeMenu}><HelpCircle size={15} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ರಸಪ್ರಶ್ನೆ</NavLink>
         </>
     );

@@ -10,11 +10,14 @@ import Help from './pages/Help';
 import About from './pages/About';
 import NotFound from './pages/NotFound';
 import Games from './pages/Games';
+import DailyChallenge from './pages/DailyChallenge';
 import Schemes from './pages/Schemes';
 import Wonders from './pages/Wonders';
 import DistrictStats from './pages/DistrictStats';
 import Quiz from './pages/Quiz';
 import Economy from './pages/Economy';
+import StudentResources from './pages/StudentResources';
+import EServices from './pages/EServices';
 import Embed from './pages/Embed';
 import ErrorBoundary from './components/ErrorBoundary';
 
@@ -35,6 +38,10 @@ function AppShell() {
 
     return (
         <div className="app-container">
+            {/* Ambient flag-tinted glows behind everything — powers the frosted glass */}
+            <div className="orb orb-1" aria-hidden="true"></div>
+            <div className="orb orb-2" aria-hidden="true"></div>
+            <div className="orb orb-3" aria-hidden="true"></div>
             <Header />
             <main className="main-content">
                 <Routes>
@@ -44,6 +51,7 @@ function AppShell() {
                     <Route path="/learn" element={<Learn />} />
                     <Route path="/examples" element={<Examples />} />
                     <Route path="/games" element={<Games />} />
+                    <Route path="/challenge" element={<DailyChallenge />} />
                     <Route path="/help" element={<Help />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/schemes" element={<Schemes />} />
@@ -51,6 +59,8 @@ function AppShell() {
                     <Route path="/districts" element={<DistrictStats />} />
                     <Route path="/quiz" element={<Quiz />} />
                     <Route path="/economy" element={<Economy />} />
+                    <Route path="/student-resources" element={<StudentResources />} />
+                    <Route path="/services" element={<EServices />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>

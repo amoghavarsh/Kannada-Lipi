@@ -3,7 +3,9 @@
     padding: var(--gap-lg) var(--gap-lg);
     border-top: 2px solid;
     border-image: linear-gradient(90deg, var(--k-yellow), var(--k-red)) 1;
-    background: var(--bg-surface-elevated);
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(var(--glass-blur-lg, 20px));
+    backdrop-filter: blur(var(--glass-blur-lg, 20px));
     margin-top: auto;
 }
 
