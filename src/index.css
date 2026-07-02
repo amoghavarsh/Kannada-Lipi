@@ -55,6 +55,18 @@
     --border-glass: 1px solid rgba(255, 255, 255, 0.08);
     --border-glass-color: rgba(255, 255, 255, 0.08);
 
+    /* Glassmorphism surfaces (dark theme) — frosted, translucent panels */
+    --glass-bg: rgba(30, 30, 46, 0.55);
+    --glass-bg-strong: rgba(30, 30, 46, 0.72);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-highlight: rgba(255, 255, 255, 0.06);
+    --glass-blur-lg: 20px;
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    --glass-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    /* Flag-tinted glass accents */
+    --glass-yellow: rgba(255, 215, 0, 0.10);
+    --glass-red: rgba(215, 25, 32, 0.10);
+
     /* Wiki Accents */
     --wiki-header: #a2a9b1;
     --wiki-bg: #f8f9fa;
@@ -82,6 +94,16 @@
 
     --wiki-bg: #ffffff;
     --wiki-border: #a2a9b1;
+
+    /* Glassmorphism surfaces (light theme) */
+    --glass-bg: rgba(255, 255, 255, 0.55);
+    --glass-bg-strong: rgba(255, 255, 255, 0.78);
+    --glass-border: rgba(255, 255, 255, 0.65);
+    --glass-highlight: rgba(255, 255, 255, 0.9);
+    --glass-shadow: 0 8px 32px rgba(31, 38, 60, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    --glass-shadow-hover: 0 16px 48px rgba(31, 38, 60, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    --glass-yellow: rgba(255, 215, 0, 0.14);
+    --glass-red: rgba(215, 25, 32, 0.08);
 }
 
 /* Base Reset */
@@ -140,12 +162,12 @@ body {
     filter: blur(100px);
     z-index: -1;
     pointer-events: none;
-    opacity: 0.4;
-    animation: floatOrb 15s infinite ease-in-out;
+    opacity: 0.55;
+    animation: floatOrb 18s infinite ease-in-out;
 }
 
 [data-theme='dark'] .orb {
-    opacity: 0.15;
+    opacity: 0.28;
 }
 
 .orb-1 {
@@ -159,6 +181,15 @@ body {
     left: -10vw;
     background: radial-gradient(circle, hsla(356, 80%, 47%, 0.3) 0%, transparent 70%);
     animation-delay: -5s;
+}
+
+.orb-3 {
+    top: 40%;
+    left: 45%;
+    width: 45vh;
+    height: 45vh;
+    background: radial-gradient(circle, hsla(51, 100%, 50%, 0.22) 0%, transparent 70%);
+    animation-delay: -10s;
 }
 
 @keyframes floatOrb {
@@ -186,11 +217,32 @@ body {
 
 /* Common Components */
 .panel {
-    background: var(--bg-surface);
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(var(--glass-blur-lg, 20px));
+    backdrop-filter: blur(var(--glass-blur-lg, 20px));
     border-radius: var(--radius-lg);
-    border: var(--border-glass);
-    box-shadow: var(--shadow-md);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     overflow: hidden;
+}
+
+/* Reusable frosted-glass surface — apply .glass to any card/panel */
+.glass {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(var(--glass-blur-lg, 20px));
+    backdrop-filter: blur(var(--glass-blur-lg, 20px));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow);
+}
+
+.glass-hover {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.glass-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--glass-shadow-hover);
+    border-color: rgba(255, 215, 0, 0.5);
 }
 
 /* Shared polished card hover — opt-in via .card-hover on any card */
@@ -202,6 +254,66 @@ body {
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
     border-color: var(--k-yellow);
+}
+
+/* ─── Global glassmorphism upgrade for all page cards/panels ─────────────
+   Applies frosted glass to the primary card classes across every page so
+   the whole site reads as one glass system, without editing 15 CSS files.  */
+.example-card,
+.lesson-card,
+.feature-card,
+.function-card,
+.quick-ref-card,
+.link-card,
+.person-card,
+.symbol-card,
+.scheme-card,
+.wonder-card,
+.econ-card,
+.summary-card,
+.hero-stat,
+.quiz-box,
+.game-panel,
+.game-tab:not(.active),
+.challenge-card,
+.chart-panel,
+.econ-chart-panel,
+.progress-panel,
+.gddp-item,
+.version-card,
+.tech-item,
+.future-item,
+.examples-stats,
+.schemes-stats,
+.filter-bar,
+.wiki-infobox,
+.infobox,
+.tip-box,
+.search-box {
+    background: var(--glass-bg) !important;
+    -webkit-backdrop-filter: blur(var(--glass-blur-lg, 20px));
+    backdrop-filter: blur(var(--glass-blur-lg, 20px));
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: var(--glass-shadow);
+}
+
+/* Smooth, flag-tinted hover for the interactive cards */
+.example-card:hover,
+.lesson-card:hover,
+.feature-card:hover,
+.function-card:hover,
+.link-card:hover,
+.person-card:hover,
+.symbol-card:hover,
+.scheme-card:hover,
+.wonder-card:hover,
+.econ-card:hover,
+.summary-card:hover,
+.hero-stat:hover,
+.gddp-item:hover {
+    box-shadow: var(--glass-shadow-hover);
+    border-color: rgba(255, 215, 0, 0.5) !important;
+    transform: translateY(-4px);
 }
 
 .btn {
@@ -241,14 +353,16 @@ body {
 }
 
 .btn-secondary {
-    background: var(--bg-surface-elevated);
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     color: var(--text-primary);
-    border: var(--border-glass);
+    border: 1px solid var(--glass-border);
 }
 
 .btn-secondary:hover {
-    background: var(--bg-surface);
-    border-color: var(--text-muted);
+    background: var(--glass-bg-strong);
+    border-color: var(--k-yellow);
 }
 
 .btn-accent {
@@ -319,11 +433,13 @@ h3 {
     animation: fadeInUp 0.3s ease;
 }
 
-/* Page Header (shared across pages) */
+/* Page Header (shared across pages) — frosted glass bar */
 .page-header {
     position: relative;
-    background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.08), rgba(var(--accent-rgb), 0.02));
-    border-bottom: 1px solid var(--border-glass-color);
+    background: linear-gradient(135deg, var(--glass-yellow), var(--glass-red));
+    -webkit-backdrop-filter: blur(var(--glass-blur-lg, 20px));
+    backdrop-filter: blur(var(--glass-blur-lg, 20px));
+    border-bottom: 1px solid var(--glass-border);
     padding: var(--gap-xl) var(--gap-lg);
     text-align: center;
     overflow: hidden;

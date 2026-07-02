@@ -38,11 +38,13 @@
 }
 
 .game-tab.active {
-    border-color: transparent;
-    background: linear-gradient(135deg, var(--k-yellow), var(--k-red));
+    border-color: transparent !important;
+    background: linear-gradient(135deg, var(--k-yellow), var(--k-red)) !important;
     color: #fff;
     box-shadow: 0 6px 18px rgba(215, 25, 32, 0.25);
 }
+.game-tab.active .game-tab-label,
+.game-tab.active .game-tab-desc { color: #fff; }
 
 .game-tab-label {
     font-weight: 700;

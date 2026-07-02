@@ -13,8 +13,8 @@ const Home = () => {
 
                 <div className="cta-group">
                     <NavLink to="/learn" className="btn btn-primary">ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ</NavLink>
+                    <NavLink to="/challenge" className="btn btn-accent">🔥 ಇಂದಿನ ಸವಾಲು</NavLink>
                     <NavLink to="/games" className="btn btn-secondary">🎮 ಆಟ ಆಡಿ</NavLink>
-                    <NavLink to="/karnataka" className="btn btn-secondary">ಕರ್ನಾಟಕದ ಬಗ್ಗೆ</NavLink>
                 </div>
 
                 <div className="hero-stats">
