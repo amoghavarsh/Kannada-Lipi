@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
     Save, Link as LinkIcon, Lightbulb, Palette, Mic, Smartphone,
-    Rocket, Eye, Gem, Github, ClipboardList
+    Rocket, Eye, Gem, Github, ClipboardList, Star, GitFork, Code2
 } from 'lucide-react';
 import './About.css';
 
@@ -195,21 +195,36 @@ const About = () => {
                 {/* Open Source */}
                 <section className="dev-section">
                     <h2 className="section-title">ಮುಕ್ತ ಮೂಲ (Open Source)</h2>
-                    <article className="developer-section">
-                        <div className="developer-body" style={{ textAlign: 'center' }}>
-                            <p className="developer-bio">
-                                ಕನ್ನಡ ಲಿಪಿ ಒಂದು ಮುಕ್ತ ಮೂಲ (open-source) ಯೋಜನೆ. ನೀವೂ ಕೊಡುಗೆ ನೀಡಬಹುದು!
-                            </p>
-                            <div className="social-links" style={{ justifyContent: 'center' }}>
-                                <a
-                                    href="https://github.com/amoghavarsh/KannadaLipi"
-                                    className="btn btn-secondary"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <Github size={16} style={{ marginRight: 4, verticalAlign: 'middle' }} /> GitHub
-                                </a>
-                            </div>
+                    <article className="opensource-card">
+                        <span className="opensource-glow" aria-hidden="true"></span>
+                        <div className="opensource-icon"><Github size={30} /></div>
+                        <h3 className="opensource-title">ಇದು ಎಲ್ಲರ ಯೋಜನೆ 🤝</h3>
+                        <p className="opensource-desc">
+                            ಕನ್ನಡ ಲಿಪಿ ಒಂದು ಮುಕ್ತ ಮೂಲ (open-source) ಯೋಜನೆ. ಡೆವಲಪರ್, ಶಿಕ್ಷಕ,
+                            ಅಥವಾ ಕನ್ನಡ ಪ್ರೇಮಿ — ಯಾರೂ ಕೊಡುಗೆ ನೀಡಬಹುದು!
+                        </p>
+                        <div className="opensource-badges">
+                            <span className="os-badge"><Code2 size={14} /> React + Vite</span>
+                            <span className="os-badge"><Star size={14} /> MIT License</span>
+                            <span className="os-badge"><GitFork size={14} /> PRs Welcome</span>
+                        </div>
+                        <div className="opensource-actions">
+                            <a
+                                href="https://github.com/amoghavarsh/Kannada-Lipi"
+                                className="btn btn-primary"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <Star size={16} style={{ marginRight: 6, verticalAlign: 'middle' }} /> GitHub‌ನಲ್ಲಿ ⭐ ನೀಡಿ
+                            </a>
+                            <a
+                                href="https://github.com/amoghavarsh/Kannada-Lipi/blob/main/CONTRIBUTING.md"
+                                className="btn btn-secondary"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <GitFork size={16} style={{ marginRight: 6, verticalAlign: 'middle' }} /> ಕೊಡುಗೆ ನೀಡಿ
+                            </a>
                         </div>
                     </article>
                 </section>

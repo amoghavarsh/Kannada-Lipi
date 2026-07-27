@@ -1,7 +1,8 @@
 /* Code Editor Styles */
 .code-editor-section {
-    margin-top: var(--gap-xl);
+    margin-top: var(--gap-md);
     padding: var(--gap-lg);
+    border-radius: var(--radius-lg);
 }
 
 .editor-controls {
@@ -41,11 +42,20 @@
 .editor-container {
     display: flex;
     position: relative;
-    border: 1px solid var(--border-glass-color);
-    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border, var(--border-glass-color));
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--glass-shadow, var(--shadow-md));
     background: var(--bg-base);
+}
+/* Accent top edge on the editor to make it feel like the star */
+.editor-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--k-yellow), var(--k-red));
+    z-index: 2;
 }
 
 .line-numbers {
@@ -59,23 +69,26 @@
     min-width: 45px;
     overflow: hidden;
     user-select: none;
-    line-height: 1.6;
-    height: 400px;
+    line-height: 1.7;
+    height: 460px;
+    padding-top: 22px;
 }
 
 .editor-textarea {
     flex: 1;
-    height: 400px;
+    height: 460px;
     background: transparent;
     color: var(--text-primary);
     font-family: var(--font-mono);
-    font-size: 1.1rem;
-    padding: 20px;
+    font-size: 1.15rem;
+    padding: 22px;
     border: none;
     outline: none;
     resize: none;
-    line-height: 1.6;
+    line-height: 1.7;
+    caret-color: var(--k-red);
 }
+[data-theme="dark"] .editor-textarea { caret-color: var(--k-yellow); }
 
 .editor-with-keyboard {
     position: relative;
@@ -270,19 +283,18 @@
 }
 
 .output-screen {
-    background: #0d0d0d;
+    background: #0d1117;
     color: #4ade80;
     font-family: var(--font-mono);
     padding: 20px;
-    border-radius: var(--radius-md);
-    height: calc(400px + 2px);
-    /* Match editor height + border */
+    border-radius: var(--radius-lg);
+    height: 460px;                    /* match editor */
     min-height: 200px;
     white-space: pre-wrap;
-    border: 2px solid #262626;
-    box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.5);
-    font-size: 1rem;
-    line-height: 1.5;
+    border: 1px solid #1f2733;
+    box-shadow: inset 0 4px 16px rgba(0, 0, 0, 0.5);
+    font-size: 1.05rem;
+    line-height: 1.6;
     overflow-y: auto;
 }
 
@@ -490,3 +502,15 @@
     from { opacity: 0; transform: translateY(-4px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* Transliteration hint */
+.translit-hint {
+    margin-top: var(--gap-sm);
+    padding: 8px 14px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--glass-yellow, rgba(255,215,0,0.1)), var(--glass-red, rgba(215,25,32,0.08)));
+    border: 1px solid var(--border-glass-color);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+.translit-hint b { color: var(--text-primary); }

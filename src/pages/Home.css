@@ -187,3 +187,32 @@
         border: 1px solid #ddd;
     }
 }
+
+/* ── Editor-led homepage (full width) ── */
+.home-editor-lead {
+    width: 100%;
+    margin: 0 auto;
+    padding: var(--gap-lg) var(--gap-lg) 0;
+}
+
+.home-editor-intro {
+    text-align: center;
+    margin-bottom: var(--gap-lg);
+}
+
+.home-lead-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin-top: var(--gap-sm);
+}
+
+.home-secondary {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--gap-xl) var(--gap-lg) calc(var(--gap-xl) * 1.4);
+}
+
+/* Demo-typing: dim caret + subtle cue that it's auto-running */
+.editor-textarea.demo-typing {
+    caret-color: transparent;
+    cursor: default;
+}
