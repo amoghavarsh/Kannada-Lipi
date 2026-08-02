@@ -19,14 +19,18 @@ const NavMenu = ({ activeSection, handleNavClick, placeKeys }) => (
 
         {[
             ['about', BookOpen, 'ಪರಿಚಯ'],
-            ['personalities', Users, 'ಪ್ರಸಿದ್ಧ ವ್ಯಕ್ತಿಗಳು'],
+            ['geography', Ruler, 'ಭೂಗೋಳ'],
             ['history', Scroll, 'ಇತಿಹಾಸ'],
+            ['personalities', Users, 'ಪ್ರಸಿದ್ಧ ವ್ಯಕ್ತಿಗಳು'],
+            ['stateSymbols', Star, 'ರಾಜ್ಯ ಲಾಂಛನಗಳು'],
             ['artForms', Drama, 'ಕಲೆ ಮತ್ತು ಸಂಸ್ಕೃತಿ'],
             ['cuisine', UtensilsCrossed, 'ಅಡುಗೆ'],
             ['districts', Map, 'ಜಿಲ್ಲೆಗಳು'],
             ['festivals', PartyPopper, 'ಹಬ್ಬಗಳು'],
             ['rivers', Waves, 'ನದಿಗಳು'],
             ['wildlife', TreePine, 'ವನ್ಯಜೀವಿ'],
+            ['government', Landmark, 'ಸರ್ಕಾರ'],
+            ['transport', BarChart3, 'ಸಾರಿಗೆ'],
             ['education', GraduationCap, 'ಶಿಕ್ಷಣ'],
             ['economy', IndianRupee, 'ಆರ್ಥಿಕತೆ'],
             ['languages', Languages, 'ಭಾಷೆಗಳು'],
@@ -250,14 +254,23 @@ const Karnataka = () => {
                     <section className="docs-section panel animate-in">
                         <h2 className="section-title">ಇತಿಹಾಸ (History)</h2>
                         <p className="wiki-p">
-                            ಕರ್ನಾಟಕದ ಇತಿಹಾಸವು ಸಾವಿರಾರು ವರ್ಷಗಳಷ್ಟು ಹಳೆಯದು. ವಿಜಯನಗರ ಸಾಮ್ರಾಜ್ಯದಂತಹ ಐತಿಹಾಸಿಕ ವೈಭವದಿಂದ ಹಿಡಿದು ಅಧುನಿಕ ತಂತ್ರಜ್ಞಾನದವರೆಗೆ ರಾಜ್ಯವು ಬೆಳೆದುಬಂದಿದೆ.
+                            ಕರ್ನಾಟಕದ ಇತಿಹಾಸವು ಸಾವಿರಾರು ವರ್ಷಗಳಷ್ಟು ಹಳೆಯದು. ೪ನೇ ಶತಮಾನದ ಕದಂಬರಿಂದ
+                            ವಿಜಯನಗರ ಸಾಮ್ರಾಜ್ಯದ ವೈಭವ ಮತ್ತು ಮೈಸೂರು ಸಂಸ್ಥಾನದವರೆಗೆ ಅನೇಕ ರಾಜವಂಶಗಳು ರಾಜ್ಯವನ್ನು ಆಳಿವೆ.
                         </p>
-                        <div className="timeline-grid">
-                            {data.history.map((h, i) => (
-                                <article key={i} className="timeline-item">
-                                    <strong>{h.icon} {h.title}</strong>
-                                    <p className="text-secondary" style={{ marginTop: 'var(--gap-xs)', marginBottom: 0 }}>{h.desc}</p>
-                                </article>
+                        <div className="kn-timeline">
+                            {data.historyTimeline.map((t, i) => (
+                                <div key={i} className="kn-timeline-item">
+                                    <div className="kn-timeline-dot" />
+                                    <div className="kn-timeline-body">
+                                        <span className="kn-timeline-period">{t.period}</span>
+                                        <h3 className="kn-timeline-name">{t.name} <span className="kn-timeline-en">{t.english}</span></h3>
+                                        <div className="kn-timeline-meta">
+                                            {t.capital && <span className="kn-tl-tag">🏛️ {t.capital}</span>}
+                                            {t.king && <span className="kn-tl-tag">👑 {t.king}</span>}
+                                        </div>
+                                        {t.fact && <p className="kn-timeline-fact">💡 {t.fact}</p>}
+                                    </div>
+                                </div>
                             ))}
                         </div>
                     </section>
@@ -445,6 +458,95 @@ const Karnataka = () => {
                                     {lang.script && <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}><I icon={PenTool} /> {lang.script}</div>}
                                     {lang.jnanpith > 0 && <div style={{ fontSize: '0.75rem', color: 'var(--accent)' }}><I icon={Trophy} /> {lang.jnanpith} ಜ್ಞಾನಪೀಠ</div>}
                                     <p className="text-secondary" style={{ fontSize: '0.8rem', margin: 'var(--gap-xs) 0 0 0' }}>{lang.desc}</p>
+                                </article>
+                            ))}
+                        </div>
+                    </section>
+                );
+
+            case 'geography':
+                return (
+                    <section className="docs-section panel animate-in">
+                        <h2 className="section-title">ಭೂಗೋಳ (Geography)</h2>
+                        <p className="wiki-p">{data.geography.intro}</p>
+                        <div className="symbols-grid">
+                            {data.geography.regions.map((r, i) => (
+                                <article key={i} className="symbol-card">
+                                    <span className="symbol-icon">{r.icon}</span>
+                                    <div className="symbol-name">{r.name} ({r.english})</div>
+                                    <p className="text-secondary" style={{ fontSize: '0.8rem', margin: 'var(--gap-xs) 0 0 0' }}>{r.desc}</p>
+                                </article>
+                            ))}
+                        </div>
+                        <table className="wiki-table" style={{ marginTop: 'var(--gap-lg)' }}>
+                            <tbody>
+                                {data.geography.facts.map((f, i) => (
+                                    <tr key={i}><th style={{ width: '45%' }}>{f.label}</th><td>{f.value}</td></tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </section>
+                );
+
+            case 'stateSymbols':
+                return (
+                    <section className="docs-section panel animate-in">
+                        <h2 className="section-title">ರಾಜ್ಯ ಲಾಂಛನಗಳು (State Symbols)</h2>
+                        <p className="wiki-p">ಕರ್ನಾಟಕದ ಅಧಿಕೃತ ರಾಜ್ಯ ಲಾಂಛನಗಳು.</p>
+                        <div className="symbols-grid">
+                            {data.stateSymbols.map((s, i) => (
+                                <article key={i} className="symbol-card">
+                                    <span className="symbol-icon">{s.icon}</span>
+                                    <div className="symbol-name">{s.name}</div>
+                                    <div style={{ fontWeight: 700, color: 'var(--text-primary)' }}>{s.value}</div>
+                                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{s.english}</div>
+                                </article>
+                            ))}
+                        </div>
+                    </section>
+                );
+
+            case 'government':
+                return (
+                    <section className="docs-section panel animate-in">
+                        <h2 className="section-title">ಸರ್ಕಾರ ಮತ್ತು ಆಡಳಿತ (Government)</h2>
+                        <p className="wiki-p">{data.government.intro}</p>
+                        <table className="wiki-table">
+                            <tbody>
+                                {data.government.facts.map((f, i) => (
+                                    <tr key={i}><th style={{ width: '45%' }}>{f.label}</th><td>{f.value}</td></tr>
+                                ))}
+                            </tbody>
+                        </table>
+
+                        <h3 className="kn-subhead">ಸಚಿವ ಸಂಪುಟ <span className="kn-asof">({data.cabinet.asOf})</span></h3>
+                        <div className="kn-cabinet">
+                            {data.cabinet.members.map((m, i) => (
+                                <article key={i} className={`kn-minister ${i < 2 ? 'kn-minister-lead' : ''}`}>
+                                    <div className="kn-minister-role">{m.role}</div>
+                                    <div className="kn-minister-name">{m.name}</div>
+                                    <div className="kn-minister-dept">{m.dept}</div>
+                                </article>
+                            ))}
+                        </div>
+                        <p className="kn-cabinet-note">
+                            ⚠️ {data.cabinet.note} <a href={data.cabinet.source} target="_blank" rel="noopener noreferrer">ಅಧಿಕೃತ ಪಟ್ಟಿ →</a>
+                        </p>
+                    </section>
+                );
+
+            case 'transport':
+                return (
+                    <section className="docs-section panel animate-in">
+                        <h2 className="section-title">ಸಾರಿಗೆ (Transport)</h2>
+                        <p className="wiki-p">{data.transport.intro}</p>
+                        <div className="symbols-grid">
+                            {data.transport.items.map((t, i) => (
+                                <article key={i} className="symbol-card" style={{ textAlign: 'left' }}>
+                                    <span className="symbol-icon">{t.icon}</span>
+                                    <div className="symbol-name">{t.name}</div>
+                                    <div style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.85rem' }}>{t.value}</div>
+                                    <p className="text-secondary" style={{ fontSize: '0.8rem', margin: 'var(--gap-xs) 0 0 0' }}>{t.desc}</p>
                                 </article>
                             ))}
                         </div>
