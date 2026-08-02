@@ -108,7 +108,19 @@ class KannadaLexer {
             'ಸಂಖ್ಯೆಯೇ': 'IS_NUMBER',
             'ವಿಶಿಷ್ಟ': 'UNIQUE',
             'ತಿರುಗಿಸು': 'REVERSE_ARRAY',
-            'ಪ್ಯಾಡ್': 'PAD'
+            'ಪ್ಯಾಡ್': 'PAD',
+            // v2.4.0 — Advanced string functions
+            'ಆರಂಭಿಸು': 'STARTS_WITH',   // startsWith(text, prefix)
+            'ಕೊನೆಗೊಳ್ಳು': 'ENDS_WITH',   // endsWith(text, suffix)
+            'ಸ್ಥಾನ': 'INDEX_OF',        // indexOf(text, sub)
+            'ಗಣನೆ': 'OCCURRENCES',      // count occurrences of sub in text
+            'ಪದಗಳು': 'WORDS',           // split text into words list
+            // v2.4.0 — Advanced math functions
+            'ಸುತ್ತು': 'ROUND_TO',       // round(num, decimals)
+            'ಮಸಾಅ': 'GCD',             // greatest common divisor
+            'ಲಸಾಅ': 'LCM',             // least common multiple
+            'ಅವಿಭಾಜ್ಯವೇ': 'IS_PRIME',   // isPrime(n) → ಸತ್ಯ/ಅಸತ್ಯ
+            'ಫಿಬೊನಾಚಿ': 'FIBONACCI'      // nth fibonacci number
         };
 
         // Token patterns

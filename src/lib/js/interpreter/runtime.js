@@ -580,6 +580,69 @@ class KannadaRuntime {
                 }
                 return padStr.padEnd(padLen, padChar);
 
+            // ── v2.4.0: Advanced string functions ──
+            case 'STARTS_WITH':
+                if (args.length < 2) throw new Error('ಆರಂಭಿಸು ಕಾರ್ಯಕ್ಕೆ ಪಠ್ಯ ಮತ್ತು ಆರಂಭ ಬೇಕು');
+                return String(args[0]).startsWith(String(args[1])) ? 'ಸತ್ಯ' : 'ಅಸತ್ಯ';
+            case 'ENDS_WITH':
+                if (args.length < 2) throw new Error('ಕೊನೆಗೊಳ್ಳು ಕಾರ್ಯಕ್ಕೆ ಪಠ್ಯ ಮತ್ತು ಕೊನೆ ಬೇಕು');
+                return String(args[0]).endsWith(String(args[1])) ? 'ಸತ್ಯ' : 'ಅಸತ್ಯ';
+            case 'INDEX_OF': {
+                if (args.length < 2) throw new Error('ಸ್ಥಾನ ಕಾರ್ಯಕ್ಕೆ ಪಠ್ಯ ಮತ್ತು ಹುಡುಕುವ ಪಠ್ಯ ಬೇಕು');
+                // Works for both strings and arrays; -1 if not found.
+                const idx = Array.isArray(args[0])
+                    ? args[0].findIndex(v => v === args[1])
+                    : String(args[0]).indexOf(String(args[1]));
+                return this.toKannada(idx);
+            }
+            case 'OCCURRENCES': {
+                if (args.length < 2) throw new Error('ಗಣನೆ ಕಾರ್ಯಕ್ಕೆ ಪಠ್ಯ ಮತ್ತು ಹುಡುಕುವ ಪಠ್ಯ ಬೇಕು');
+                const hay = String(args[0]);
+                const needle = String(args[1]);
+                if (needle === '') return this.toKannada(0);
+                let count = 0, from = 0, at;
+                while ((at = hay.indexOf(needle, from)) !== -1) { count++; from = at + needle.length; }
+                return this.toKannada(count);
+            }
+            case 'WORDS':
+                if (args.length === 0) throw new Error('ಪದಗಳು ಕಾರ್ಯಕ್ಕೆ ಪಠ್ಯ ಬೇಕು');
+                return String(args[0]).split(/\s+/).filter(w => w.length > 0);
+
+            // ── v2.4.0: Advanced math functions ──
+            case 'ROUND_TO': {
+                if (args.length < 1) throw new Error('ಸುತ್ತು ಕಾರ್ಯಕ್ಕೆ ಸಂಖ್ಯೆ ಬೇಕು');
+                const n = Number(args[0]);
+                const d = args[1] !== undefined ? Math.floor(Number(args[1])) : 0;
+                const f = Math.pow(10, d);
+                return this.toKannada(Math.round(n * f) / f);
+            }
+            case 'GCD': {
+                if (args.length < 2) throw new Error('ಮಸಾಅ ಕಾರ್ಯಕ್ಕೆ ಎರಡು ಸಂಖ್ಯೆಗಳು ಬೇಕು');
+                const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) { [a, b] = [b, a % b]; } return a; };
+                return this.toKannada(args.map(Number).reduce((a, b) => gcd(a, b)));
+            }
+            case 'LCM': {
+                if (args.length < 2) throw new Error('ಲಸಾಅ ಕಾರ್ಯಕ್ಕೆ ಎರಡು ಸಂಖ್ಯೆಗಳು ಬೇಕು');
+                const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) { [a, b] = [b, a % b]; } return a; };
+                const lcm = (a, b) => (a === 0 || b === 0) ? 0 : Math.abs(a * b) / gcd(a, b);
+                return this.toKannada(args.map(Number).reduce((a, b) => lcm(a, b)));
+            }
+            case 'IS_PRIME': {
+                if (args.length === 0) throw new Error('ಅವಿಭಾಜ್ಯವೇ ಕಾರ್ಯಕ್ಕೆ ಸಂಖ್ಯೆ ಬೇಕು');
+                const n = Math.floor(Number(args[0]));
+                let prime = n >= 2;
+                for (let i = 2; i * i <= n; i++) { if (n % i === 0) { prime = false; break; } }
+                return prime ? 'ಸತ್ಯ' : 'ಅಸತ್ಯ';
+            }
+            case 'FIBONACCI': {
+                if (args.length === 0) throw new Error('ಫಿಬೊನಾಚಿ ಕಾರ್ಯಕ್ಕೆ ಸಂಖ್ಯೆ ಬೇಕು');
+                let k = Math.floor(Number(args[0]));
+                if (k < 0) throw new Error('ಫಿಬೊನಾಚಿ ಕಾರ್ಯಕ್ಕೆ ೦ ಅಥವಾ ಹೆಚ್ಚಿನ ಸಂಖ್ಯೆ ಬೇಕು');
+                let a = 0, b = 1;
+                for (let i = 0; i < k; i++) { [a, b] = [b, a + b]; }
+                return this.toKannada(a);
+            }
+
             // Higher-order array functions
             case 'MAP':
                 if (!Array.isArray(args[0])) throw new Error('ನಕ್ಷೆ ಕಾರ್ಯಕ್ಕೆ ಪಟ್ಟಿ ಬೇಕು');
