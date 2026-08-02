@@ -400,6 +400,9 @@ class KannadaParser {
             // New functions
             'LOG', 'FACTORIAL', 'AVERAGE', 'REPEAT', 'DIGITS',
             'SUM', 'IS_NUMBER', 'UNIQUE', 'REVERSE_ARRAY', 'PAD',
+            // v2.4.0 advanced string + math functions
+            'STARTS_WITH', 'ENDS_WITH', 'INDEX_OF', 'OCCURRENCES', 'WORDS',
+            'ROUND_TO', 'GCD', 'LCM', 'IS_PRIME', 'FIBONACCI',
             'IDENTIFIER')) {
             return this.parseIdentifierOrCall();
         }

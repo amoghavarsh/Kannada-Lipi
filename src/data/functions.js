@@ -68,7 +68,25 @@ export const FUNCTION_CATEGORIES = [
             { name: "ಸಣ್ಣಕ್ಷರ", nameEn: "Lowercase", syntax: "ಸಣ್ಣಕ್ಷರ(\"ಪಠ್ಯ\")", description: "ಸಣ್ಣಕ್ಷರಕ್ಕೆ ಪರಿವರ್ತಿಸುತ್ತದೆ", descriptionEn: "Converts to lowercase", example: "ಸಣ್ಣಕ್ಷರ(\"HELLO\")", result: "hello" },
             { name: "ಎಣಿಕೆ", nameEn: "Word Count", syntax: "ಎಣಿಕೆ(\"ಪಠ್ಯ\")", description: "ಪದಗಳ ಎಣಿಕೆ", descriptionEn: "Counts words in text", example: "ಎಣಿಕೆ(\"ಜೈ ಕರ್ನಾಟಕ ಮಾತೆ\")", result: "೩" },
             { name: "ಪುನರಾವರ್ತಿಸು", nameEn: "Repeat", syntax: "ಪುನರಾವರ್ತಿಸು(\"ಪಠ್ಯ\", ಸಂಖ್ಯೆ)", description: "ಪಠ್ಯವನ್ನು ನಿರ್ದಿಷ್ಟ ಸಂಖ್ಯೆಯ ಬಾರಿ ಪುನರಾವರ್ತಿಸುತ್ತದೆ", descriptionEn: "Repeats a string N times", example: "ಪುನರಾವರ್ತಿಸು(\"ಕನ್ನಡ \", ೩)", result: "ಕನ್ನಡ ಕನ್ನಡ ಕನ್ನಡ " },
-            { name: "ಪ್ಯಾಡ್", nameEn: "Pad", syntax: "ಪ್ಯಾಡ್(\"ಪಠ್ಯ\", ಉದ್ದ, \"ಅಕ್ಷರ\", \"ದಿಕ್ಕು\")", description: "ಪಠ್ಯವನ್ನು ನಿರ್ದಿಷ್ಟ ಉದ್ದಕ್ಕೆ ಪ್ಯಾಡ್ ಮಾಡುತ್ತದೆ", descriptionEn: "Pads string to specified length (direction: ಬಲ/ಎಡ)", example: "ಪ್ಯಾಡ್(\"೫\", ೩, \"೦\", \"ಎಡ\")", result: "೦೦೫" }
+            { name: "ಪ್ಯಾಡ್", nameEn: "Pad", syntax: "ಪ್ಯಾಡ್(\"ಪಠ್ಯ\", ಉದ್ದ, \"ಅಕ್ಷರ\", \"ದಿಕ್ಕು\")", description: "ಪಠ್ಯವನ್ನು ನಿರ್ದಿಷ್ಟ ಉದ್ದಕ್ಕೆ ಪ್ಯಾಡ್ ಮಾಡುತ್ತದೆ", descriptionEn: "Pads string to specified length (direction: ಬಲ/ಎಡ)", example: "ಪ್ಯಾಡ್(\"೫\", ೩, \"೦\", \"ಎಡ\")", result: "೦೦೫" },
+            { name: "ಆರಂಭಿಸು", nameEn: "Starts With", syntax: "ಆರಂಭಿಸು(\"ಪಠ್ಯ\", \"ಆರಂಭ\")", description: "ಪಠ್ಯವು ನಿರ್ದಿಷ್ಟ ಪಠ್ಯದಿಂದ ಆರಂಭವಾಗುತ್ತದೆಯೇ", descriptionEn: "Checks if text starts with given prefix", example: "ಆರಂಭಿಸು(\"ಕರ್ನಾಟಕ\", \"ಕರ್\")", result: "ಸತ್ಯ" },
+            { name: "ಕೊನೆಗೊಳ್ಳು", nameEn: "Ends With", syntax: "ಕೊನೆಗೊಳ್ಳು(\"ಪಠ್ಯ\", \"ಕೊನೆ\")", description: "ಪಠ್ಯವು ನಿರ್ದಿಷ್ಟ ಪಠ್ಯದಿಂದ ಕೊನೆಗೊಳ್ಳುತ್ತದೆಯೇ", descriptionEn: "Checks if text ends with given suffix", example: "ಕೊನೆಗೊಳ್ಳು(\"ಕನ್ನಡ\", \"ಡ\")", result: "ಸತ್ಯ" },
+            { name: "ಸ್ಥಾನ", nameEn: "Index Of", syntax: "ಸ್ಥಾನ(\"ಪಠ್ಯ\", \"ಹುಡುಕು\")", description: "ಪಠ್ಯ/ಪಟ್ಟಿಯಲ್ಲಿ ಮೊದಲ ಸ್ಥಾನ (ಸಿಗದಿದ್ದರೆ -೧)", descriptionEn: "First index of substring/item (-1 if not found)", example: "ಸ್ಥಾನ(\"namaste\", \"m\")", result: "೨" },
+            { name: "ಗಣನೆ", nameEn: "Occurrences", syntax: "ಗಣನೆ(\"ಪಠ್ಯ\", \"ಹುಡುಕು\")", description: "ಪಠ್ಯದಲ್ಲಿ ಎಷ್ಟು ಬಾರಿ ಬರುತ್ತದೆ ಎಂದು ಎಣಿಸುತ್ತದೆ", descriptionEn: "Counts occurrences of a substring", example: "ಗಣನೆ(\"ababab\", \"ab\")", result: "೩" },
+            { name: "ಪದಗಳು", nameEn: "Words", syntax: "ಪದಗಳು(\"ವಾಕ್ಯ\")", description: "ವಾಕ್ಯವನ್ನು ಪದಗಳ ಪಟ್ಟಿಯಾಗಿ ವಿಭಜಿಸುತ್ತದೆ", descriptionEn: "Splits a sentence into a list of words", example: "ಪದಗಳು(\"ಕನ್ನಡ ನಾಡು\")", result: "[ಕನ್ನಡ, ನಾಡು]" }
+        ]
+    },
+    {
+        id: "math-advanced",
+        name: "ಸುಧಾರಿತ ಗಣಿತ",
+        nameEn: "Advanced Math",
+        iconKey: "Hash",
+        functions: [
+            { name: "ಸುತ್ತು", nameEn: "Round To", syntax: "ಸುತ್ತು(ಸಂಖ್ಯೆ, ದಶಮಾಂಶ)", description: "ನಿರ್ದಿಷ್ಟ ದಶಮಾಂಶ ಸ್ಥಾನಗಳಿಗೆ ಸುತ್ತುತ್ತದೆ", descriptionEn: "Rounds to N decimal places", example: "ಸುತ್ತು(೩.೧೪೧೫೯, ೨)", result: "೩.೧೪" },
+            { name: "ಮಸಾಅ", nameEn: "GCD", syntax: "ಮಸಾಅ(ಸಂ೧, ಸಂ೨, ...)", description: "ಮಹತ್ತಮ ಸಾಮಾನ್ಯ ಅಪವರ್ತನ (HCF/GCD)", descriptionEn: "Greatest Common Divisor", example: "ಮಸಾಅ(೧೨, ೧೮)", result: "೬" },
+            { name: "ಲಸಾಅ", nameEn: "LCM", syntax: "ಲಸಾಅ(ಸಂ೧, ಸಂ೨, ...)", description: "ಲಘುತ್ತಮ ಸಾಮಾನ್ಯ ಅಪವರ್ತ್ಯ (LCM)", descriptionEn: "Least Common Multiple", example: "ಲಸಾಅ(೪, ೬)", result: "೧೨" },
+            { name: "ಅವಿಭಾಜ್ಯವೇ", nameEn: "Is Prime", syntax: "ಅವಿಭಾಜ್ಯವೇ(ಸಂಖ್ಯೆ)", description: "ಸಂಖ್ಯೆ ಅವಿಭಾಜ್ಯವೇ (prime) ಎಂದು ಪರಿಶೀಲಿಸುತ್ತದೆ", descriptionEn: "Checks whether a number is prime", example: "ಅವಿಭಾಜ್ಯವೇ(೧೭)", result: "ಸತ್ಯ" },
+            { name: "ಫಿಬೊನಾಚಿ", nameEn: "Fibonacci", syntax: "ಫಿಬೊನಾಚಿ(ಸ್ಥಾನ)", description: "n-ನೇ ಫಿಬೊನಾಚಿ ಸಂಖ್ಯೆ", descriptionEn: "Returns the nth Fibonacci number", example: "ಫಿಬೊನಾಚಿ(೧೦)", result: "೫೫" }
         ]
     },
     {
