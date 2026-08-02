@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { NavLink } from 'react-router-dom';
 import { Link, Sparkles, Landmark, ChevronDown, HelpCircle, IndianRupee, MapPin, GraduationCap, Building2 } from 'lucide-react';
+import VisitorCount from './VisitorCount';
 import './Header.css';
 
 const Header = () => {
@@ -98,6 +99,7 @@ const Header = () => {
                 </nav>
 
                 <div className="header-actions">
+                    <VisitorCount />
                     <button
                         className={`hamburger-btn ${isMenuOpen ? 'active' : ''}`}
                         onClick={toggleMenu}

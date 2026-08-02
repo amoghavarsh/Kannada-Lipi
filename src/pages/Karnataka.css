@@ -772,3 +772,95 @@
         width: 200px;
     }
         }
+
+/* ── History timeline (professional wiki-style) ── */
+.kn-timeline {
+    position: relative;
+    padding-left: 28px;
+    margin-top: var(--gap-lg);
+}
+.kn-timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--k-yellow), var(--k-red), transparent);
+}
+.kn-timeline-item { position: relative; margin-bottom: var(--gap-lg); }
+.kn-timeline-item:last-child { margin-bottom: 0; }
+.kn-timeline-dot {
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--k-red);
+    border: 3px solid var(--bg-surface);
+    box-shadow: 0 0 0 2px rgba(215, 25, 32, 0.25);
+}
+[data-theme="dark"] .kn-timeline-dot { background: var(--k-yellow); }
+.kn-timeline-body {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-glass-color);
+    border-radius: var(--radius-md);
+    padding: var(--gap-md);
+}
+.kn-timeline-period {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, var(--k-yellow), var(--k-red));
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 6px;
+}
+.kn-timeline-name { font-size: 1.05rem; margin: 0 0 4px 0; color: var(--text-primary); }
+.kn-timeline-en { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; }
+
+/* Timeline meta tags + memorable fact */
+.kn-timeline-meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 8px; }
+.kn-tl-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: var(--bg-base);
+    border: 1px solid var(--border-glass-color);
+    color: var(--text-secondary);
+}
+.kn-timeline-fact {
+    font-size: 0.82rem;
+    color: var(--text-primary);
+    margin: 0;
+    padding: 8px 10px;
+    background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(215,25,32,0.06));
+    border-radius: var(--radius-sm);
+}
+
+/* Cabinet grid */
+.kn-subhead { font-size: 1.15rem; margin: var(--gap-lg) 0 var(--gap-md); color: var(--text-primary); }
+.kn-asof { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+.kn-cabinet {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--gap-sm);
+}
+.kn-minister {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-glass-color);
+    border-left: 3px solid var(--k-red);
+    border-radius: var(--radius-md);
+    padding: var(--gap-md);
+}
+.kn-minister-lead { border-left-color: var(--k-yellow); background: linear-gradient(135deg, rgba(255,215,0,0.08), transparent); }
+.kn-minister-role { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--k-red); }
+[data-theme="dark"] .kn-minister-role { color: var(--k-yellow); }
+.kn-minister-name { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin: 2px 0 4px; }
+.kn-minister-dept { font-size: 0.8rem; color: var(--text-secondary); }
+.kn-cabinet-note { margin-top: var(--gap-md); font-size: 0.8rem; color: var(--text-muted); }
+.kn-cabinet-note a { color: var(--k-red); }
+[data-theme="dark"] .kn-cabinet-note a { color: var(--k-yellow); }
