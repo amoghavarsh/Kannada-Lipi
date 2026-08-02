@@ -571,3 +571,43 @@ h3 {
 [data-theme="light"] {
     --accent-rgb: 255, 215, 0;
 }
+/* ═══ Global mobile spacing fixes (applies to all pages) ═══ */
+@media (max-width: 600px) {
+    /* Prevent any horizontal overflow site-wide */
+    html, body { max-width: 100%; overflow-x: hidden; }
+
+    /* Tighter, consistent horizontal padding for every page content wrapper */
+    [class$="-content"],
+    .examples-content, .schemes-content, .wonders-content, .rescards-content,
+    .district-content, .economy-content, .quiz-content, .games-content,
+    .challenge-content, .learn-content, .about-content, .dexp-content {
+        padding-left: var(--gap-md) !important;
+        padding-right: var(--gap-md) !important;
+    }
+
+    /* Compact page headers on phones */
+    .page-header { padding: var(--gap-lg) var(--gap-md); }
+    .page-header-title { font-size: 1.5rem; gap: 8px; }
+    .page-header-icon { width: 40px; height: 40px; }
+    .page-header-subtitle { font-size: 0.9rem; }
+
+    /* Section titles + generic section padding */
+    .section-title { font-size: 1.5rem; }
+
+    /* Grids collapse to a single, full-width column */
+    .examples-grid, .schemes-grid, .wonders-grid, .rescards-grid,
+    .econ-grid, .skills-grid { grid-template-columns: 1fr !important; }
+
+    /* Buttons: comfortable tap targets, don't overflow */
+    .btn { padding: 11px 18px; font-size: 0.9rem; }
+
+    /* Tables scroll instead of breaking layout */
+    .table-wrap, .wiki-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+/* Extra-small phones */
+@media (max-width: 380px) {
+    :root { --gap-lg: 18px; --gap-xl: 28px; }
+    .page-header-title { font-size: 1.3rem; }
+    .btn { padding: 10px 14px; font-size: 0.85rem; }
+}

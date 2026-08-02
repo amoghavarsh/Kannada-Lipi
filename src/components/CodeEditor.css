@@ -314,15 +314,20 @@
     .btn-group {
         justify-content: center;
         flex-wrap: wrap;
+        gap: 6px;
     }
 
+    /* Two-per-row buttons on phones so labels stay readable (not 6 slivers) */
     .btn-group .btn {
-        font-size: 0.8rem;
-        padding: var(--gap-sm) var(--gap-md);
-        flex: 1;
+        font-size: 0.82rem;
+        padding: 9px 10px;
+        flex: 1 1 calc(50% - 6px);
         min-width: 0;
         text-align: center;
+        justify-content: center;
     }
+    /* Run button gets its own full-width prominent row */
+    .btn-group .run-btn { flex-basis: 100%; }
 
     .editor-container {
         flex-direction: column;
