@@ -68,10 +68,13 @@ const Certificate = () => {
 
         ctx.textAlign = 'center';
 
-        // Real KannadaLipi logo (contains the ಕ ಲಿಪಿ brand)
+        // Real KannadaLipi logo — preserve aspect ratio (image isn't square).
         const logo = logoRef.current;
         if (logo && logo.complete && logo.naturalWidth) {
-            ctx.drawImage(logo, W / 2 - 55, 92, 110, 110);
+            const targetH = 96;
+            const scale = targetH / logo.naturalHeight;
+            const drawW = logo.naturalWidth * scale;
+            ctx.drawImage(logo, W / 2 - drawW / 2, 92, drawW, targetH);
         }
 
         // Subtitle band
