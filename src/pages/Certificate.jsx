@@ -85,16 +85,12 @@ const Certificate = () => {
         ctx.fillStyle = '#FFD700';
         [-30, 0, 30].forEach((dx) => { ctx.beginPath(); ctx.arc(W / 2 + dx, 308, 4, 0, 7); ctx.fill(); });
 
-        // Presented to
-        ctx.fillStyle = '#888'; ctx.font = '18px Georgia, serif';
-        ctx.fillText('ಈ ಪ್ರಮಾಣಪತ್ರವನ್ನು ಹೆಮ್ಮೆಯಿಂದ ನೀಡಲಾಗಿದೆ', W / 2, 360);
-
         // Name (reduced size) + fading gradient underline
-        ctx.fillStyle = '#111'; ctx.font = 'bold 46px Georgia, serif';
-        ctx.fillText(name || 'ಕಲಿಕಾರ್ಥಿ', W / 2, 438);
+        ctx.fillStyle = '#111'; ctx.font = 'bold 48px Georgia, serif';
+        ctx.fillText(name || 'ಕಲಿಕಾರ್ಥಿ', W / 2, 420);
         const ng = ctx.createLinearGradient(W / 2 - 280, 0, W / 2 + 280, 0);
         ng.addColorStop(0, 'rgba(255,215,0,0)'); ng.addColorStop(0.5, '#D71920'); ng.addColorStop(1, 'rgba(255,215,0,0)');
-        ctx.strokeStyle = ng; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(W / 2 - 280, 468); ctx.lineTo(W / 2 + 280, 468); ctx.stroke();
+        ctx.strokeStyle = ng; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(W / 2 - 280, 448); ctx.lineTo(W / 2 + 280, 448); ctx.stroke();
 
         // Achievement — clean two-line statement
         ctx.fillStyle = '#444'; ctx.font = '22px Georgia, serif';
