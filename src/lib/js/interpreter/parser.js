@@ -60,13 +60,15 @@ class KannadaParser {
 
         if (this.match('EOF')) return null;
 
-        // Variable assignment: identifier = expression
-        if (this.match('IDENTIFIER') && this.peek().type === 'EQUAL') {
+        // Variable assignment: name = expression
+        // A "name" may be an IDENTIFIER or a Kannada keyword used as a variable
+        // (e.g. ಮೊತ್ತ = ೧೦), so we key off the "= next" shape, not the token type.
+        if (this.peek().type === 'EQUAL' && this.isAssignableName(this.current())) {
             return this.parseAssignment();
         }
 
-        // Indexed assignment: identifier[ key ] = expression  (arrays & dicts)
-        if (this.match('IDENTIFIER') && this.peek().type === 'LBRACKET') {
+        // Indexed assignment: name[ key ] = expression  (arrays & dicts)
+        if (this.peek().type === 'LBRACKET' && this.isAssignableName(this.current())) {
             const save = this.pos;
             const name = this.advance().value;
             this.advance(); // consume [
@@ -120,11 +122,32 @@ class KannadaParser {
         return this.parseExpression();
     }
 
+    // A token can name a variable if it's an IDENTIFIER, or a Kannada keyword
+    // whose value is Kannada letters (so users can name a variable ಮೊತ್ತ, ದಿನ,
+    // etc.). Structural keywords/operators are excluded so `ಆದರೆ =` never counts.
+    isAssignableName(token) {
+        if (!token || !token.value) return false;
+        if (token.type === 'IDENTIFIER') return true;
+        const structural = ['IF', 'ELSE', 'WHILE', 'FOR', 'FROM', 'TO', 'FUNCTION',
+            'RETURN', 'BREAK', 'CONTINUE', 'AND', 'OR', 'NOT', 'TRUE', 'FALSE'];
+        if (structural.includes(token.type)) return false;
+        // Only Kannada-letter names (built-in function keywords) are assignable.
+        return /^[ಀ-೿_]+$/.test(token.value);
+    }
+
+    // Consume a variable/function/param name — an IDENTIFIER or a Kannada
+    // keyword used as a name (so ಮೊತ್ತ, ದಿನ, etc. work everywhere a name is expected).
+    expectName() {
+        const tok = this.current();
+        if (this.isAssignableName(tok)) return this.advance().value;
+        return this.expect('IDENTIFIER').value; // triggers the standard error
+    }
+
     /**
      * Parse variable assignment
      */
     parseAssignment() {
-        const name = this.expect('IDENTIFIER').value;
+        const name = this.advance().value;   // IDENTIFIER or keyword-as-variable
         this.expect('EQUAL');
         const value = this.parseExpression();
         return {
@@ -185,7 +208,7 @@ class KannadaParser {
      */
     parseForLoop() {
         this.expect('FOR');
-        const variable = this.expect('IDENTIFIER').value;
+        const variable = this.expectName();
         this.expect('FROM');
         const start = this.parseExpression();
         this.expect('TO');
@@ -209,12 +232,12 @@ class KannadaParser {
      */
     parseFunctionDef() {
         this.expect('FUNCTION');
-        const name = this.expect('IDENTIFIER').value;
+        const name = this.expectName();
         this.expect('LPAREN');
 
         const params = [];
         while (!this.match('RPAREN')) {
-            params.push(this.expect('IDENTIFIER').value);
+            params.push(this.expectName());
             if (this.match('COMMA')) {
                 this.advance();
             }
