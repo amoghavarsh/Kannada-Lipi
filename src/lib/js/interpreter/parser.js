@@ -65,6 +65,22 @@ class KannadaParser {
             return this.parseAssignment();
         }
 
+        // Indexed assignment: identifier[ key ] = expression  (arrays & dicts)
+        if (this.match('IDENTIFIER') && this.peek().type === 'LBRACKET') {
+            const save = this.pos;
+            const name = this.advance().value;
+            this.advance(); // consume [
+            const index = this.parseExpression();
+            this.expect('RBRACKET');
+            if (this.match('EQUAL')) {
+                this.advance();
+                const value = this.parseExpression();
+                return { type: 'IndexAssignment', name, index, value };
+            }
+            // Not an assignment — rewind and fall through to expression parsing.
+            this.pos = save;
+        }
+
         // If statement
         if (this.match('IF')) {
             return this.parseIfStatement();
@@ -372,6 +388,11 @@ class KannadaParser {
             return this.parseArrayLiteral();
         }
 
+        // Dictionary literal: { "ಕೀ": ಮೌಲ್ಯ, ... }
+        if (this.match('LBRACE')) {
+            return this.parseDictLiteral();
+        }
+
         // Built-in functions and identifiers
         if (this.match('PRINT', 'ROUND', 'LENGTH', 'MAX', 'MIN', 'SORT_ASC', 'SORT_DESC',
             'COLLECT', 'SEARCH', 'SWAP', 'COUNT', 'INPUT', 'ALPHABET',
@@ -403,6 +424,8 @@ class KannadaParser {
             // v2.4.0 advanced string + math functions
             'STARTS_WITH', 'ENDS_WITH', 'INDEX_OF', 'OCCURRENCES', 'WORDS',
             'ROUND_TO', 'GCD', 'LCM', 'IS_PRIME', 'FIBONACCI',
+            // v2.5.0 dictionary helpers
+            'DICT_KEYS', 'DICT_VALUES', 'DICT_HAS',
             'IDENTIFIER')) {
             return this.parseIdentifierOrCall();
         }
@@ -426,6 +449,21 @@ class KannadaParser {
 
         this.expect('RBRACKET');
         return { type: 'Array', elements };
+    }
+
+    // Parse a dictionary literal: { "ಕೀ": ಮೌಲ್ಯ, "ಕೀ೨": ಮೌಲ್ಯ೨ }
+    parseDictLiteral() {
+        this.expect('LBRACE');
+        const pairs = [];
+        while (!this.match('RBRACE')) {
+            const key = this.parseExpression();      // key expression (usually a string)
+            this.expect('COLON');
+            const value = this.parseExpression();    // value expression
+            pairs.push({ key, value });
+            if (this.match('COMMA')) this.advance();
+        }
+        this.expect('RBRACE');
+        return { type: 'Dict', pairs };
     }
 
     /**

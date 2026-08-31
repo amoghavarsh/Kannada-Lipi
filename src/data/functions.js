@@ -144,6 +144,20 @@ export const FUNCTION_CATEGORIES = [
         ]
     },
     {
+        id: "dictionary",
+        name: "ನಿಘಂಟು (Dictionary)",
+        nameEn: "Dictionary / Map",
+        iconKey: "ClipboardList",
+        functions: [
+            { name: "ನಿಘಂಟು ರಚನೆ", nameEn: "Create Dict", syntax: "ಅ = {\"ಕೀ\": ಮೌಲ್ಯ}", description: "ಕೀ-ಮೌಲ್ಯ ಜೋಡಿಗಳ ನಿಘಂಟು ರಚಿಸುತ್ತದೆ", descriptionEn: "Creates a key→value dictionary", example: "ಅ = {\"ಹೆಸರು\": \"ರಾಮ\"}", result: "{ಹೆಸರು: ರಾಮ}" },
+            { name: "ಮೌಲ್ಯ ಪಡೆ", nameEn: "Access", syntax: "ಅ[\"ಕೀ\"]", description: "ಕೀ ಮೂಲಕ ಮೌಲ್ಯ ಪಡೆಯುತ್ತದೆ", descriptionEn: "Gets a value by key", example: "ಅ[\"ಹೆಸರು\"]", result: "ರಾಮ" },
+            { name: "ಮೌಲ್ಯ ಸೇರಿಸು", nameEn: "Set", syntax: "ಅ[\"ಕೀ\"] = ಮೌಲ್ಯ", description: "ಕೀ ಸೇರಿಸುತ್ತದೆ ಅಥವಾ ಬದಲಿಸುತ್ತದೆ", descriptionEn: "Adds or updates a key", example: "ಅ[\"ವಯಸ್ಸು\"] = ೨೫", result: "ನವೀಕರಿಸಿದ ನಿಘಂಟು" },
+            { name: "ಕೀಗಳು", nameEn: "Keys", syntax: "ಕೀಗಳು(ನಿಘಂಟು)", description: "ಎಲ್ಲಾ ಕೀಗಳ ಪಟ್ಟಿ", descriptionEn: "Returns list of all keys", example: "ಕೀಗಳು({\"a\": ೧, \"b\": ೨})", result: "[a, b]" },
+            { name: "ಮೌಲ್ಯಗಳು", nameEn: "Values", syntax: "ಮೌಲ್ಯಗಳು(ನಿಘಂಟು)", description: "ಎಲ್ಲಾ ಮೌಲ್ಯಗಳ ಪಟ್ಟಿ", descriptionEn: "Returns list of all values", example: "ಮೌಲ್ಯಗಳು({\"a\": ೧, \"b\": ೨})", result: "[೧, ೨]" },
+            { name: "ಕೀ_ಇದೆಯೇ", nameEn: "Has Key", syntax: "ಕೀ_ಇದೆಯೇ(ನಿಘಂಟು, \"ಕೀ\")", description: "ಕೀ ಇದೆಯೇ ಎಂದು ಪರಿಶೀಲಿಸುತ್ತದೆ", descriptionEn: "Checks whether a key exists", example: "ಕೀ_ಇದೆಯೇ(ಅ, \"ಹೆಸರು\")", result: "ಸತ್ಯ" }
+        ]
+    },
+    {
         id: "higher-order",
         name: "ಉನ್ನತ ಪಟ್ಟಿ ಕಾರ್ಯಗಳು",
         nameEn: "Higher-Order Array Functions",

@@ -11,6 +11,7 @@ import About from './pages/About';
 import NotFound from './pages/NotFound';
 import Games from './pages/Games';
 import DailyChallenge from './pages/DailyChallenge';
+import Certificate from './pages/Certificate';
 import Schemes from './pages/Schemes';
 import Wonders from './pages/Wonders';
 import DistrictStats from './pages/DistrictStats';
@@ -52,6 +53,7 @@ function AppShell() {
                     <Route path="/examples" element={<Examples />} />
                     <Route path="/games" element={<Games />} />
                     <Route path="/challenge" element={<DailyChallenge />} />
+                    <Route path="/certificate" element={<Certificate />} />
                     <Route path="/help" element={<Help />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/schemes" element={<Schemes />} />

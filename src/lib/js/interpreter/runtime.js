@@ -67,6 +67,8 @@ class KannadaRuntime {
                 return this.executeFor(node);
             case 'FunctionDef':
                 return this.executeFunctionDef(node);
+            case 'IndexAssignment':
+                return this.executeIndexAssignment(node);
             case 'Return':
                 throw { type: 'Return', value: this.evaluate(node.value) };
             case 'Break':
@@ -186,6 +188,15 @@ class KannadaRuntime {
 
             case 'Array':
                 return node.elements.map(e => this.evaluate(e));
+
+            case 'Dict': {
+                // Dictionaries are JS Maps so they stay distinct from arrays.
+                const m = new Map();
+                for (const p of node.pairs) {
+                    m.set(this.evaluate(p.key), this.evaluate(p.value));
+                }
+                return m;
+            }
 
             case 'Identifier':
                 // First check if it's a variable
@@ -643,6 +654,17 @@ class KannadaRuntime {
                 return this.toKannada(a);
             }
 
+            // ── v2.5.0: Dictionary (ನಿಘಂಟು) helpers ──
+            case 'DICT_KEYS':
+                if (!(args[0] instanceof Map)) throw new Error('ಕೀಗಳು ಕಾರ್ಯಕ್ಕೆ ನಿಘಂಟು ಬೇಕು');
+                return [...args[0].keys()];
+            case 'DICT_VALUES':
+                if (!(args[0] instanceof Map)) throw new Error('ಮೌಲ್ಯಗಳು ಕಾರ್ಯಕ್ಕೆ ನಿಘಂಟು ಬೇಕು');
+                return [...args[0].values()];
+            case 'DICT_HAS':
+                if (!(args[0] instanceof Map)) throw new Error('ಕೀ_ಇದೆಯೇ ಕಾರ್ಯಕ್ಕೆ ನಿಘಂಟು ಬೇಕು');
+                return args[0].has(args[1]) ? 'ಸತ್ಯ' : 'ಅಸತ್ಯ';
+
             // Higher-order array functions
             case 'MAP':
                 if (!Array.isArray(args[0])) throw new Error('ನಕ್ಷೆ ಕಾರ್ಯಕ್ಕೆ ಪಟ್ಟಿ ಬೇಕು');
@@ -798,18 +820,47 @@ class KannadaRuntime {
      * Evaluate array indexing
      */
     evaluateIndex(node) {
-        const array = this.evaluate(node.array);
+        const target = this.evaluate(node.array);
         const index = this.evaluate(node.index);
 
-        if (!Array.isArray(array)) {
-            throw new Error('ಇಂಡೆಕ್ಸಿಂಗ್‌ಗೆ ಪಟ್ಟಿ ಬೇಕು');
+        // Dictionary lookup: ನಿಘಂಟು["ಕೀ"]
+        if (target instanceof Map) {
+            if (!target.has(index)) {
+                throw new Error(`ನಿಘಂಟಿನಲ್ಲಿ "${this.formatOutput(index)}" ಕೀ ಇಲ್ಲ`);
+            }
+            return target.get(index);
         }
 
-        if (index < 0 || index >= array.length) {
-            throw new Error(`ಇಂಡೆಕ್ಸ್ ${index} ಪಟ್ಟಿಯ ಗಾತ್ರ ${array.length} ಮೀರಿದೆ`);
+        if (!Array.isArray(target)) {
+            throw new Error('ಇಂಡೆಕ್ಸಿಂಗ್‌ಗೆ ಪಟ್ಟಿ ಅಥವಾ ನಿಘಂಟು ಬೇಕು');
         }
 
-        return array[Math.floor(index)];
+        if (index < 0 || index >= target.length) {
+            throw new Error(`ಇಂಡೆಕ್ಸ್ ${index} ಪಟ್ಟಿಯ ಗಾತ್ರ ${target.length} ಮೀರಿದೆ`);
+        }
+
+        return target[Math.floor(index)];
+    }
+
+    // Handle arr[i] = v and dict["k"] = v
+    executeIndexAssignment(node) {
+        const target = this.variables[node.name];
+        const index = this.evaluate(node.index);
+        const value = this.evaluate(node.value);
+
+        if (target instanceof Map) {
+            target.set(index, value);          // dict: add or update key
+            return value;
+        }
+        if (Array.isArray(target)) {
+            const i = Math.floor(Number(index));
+            if (i < 0 || i >= target.length) {
+                throw new Error(`ಇಂಡೆಕ್ಸ್ ${index} ಪಟ್ಟಿಯ ಗಾತ್ರ ${target.length} ಮೀರಿದೆ`);
+            }
+            target[i] = value;
+            return value;
+        }
+        throw new Error(`"${node.name}" ಪಟ್ಟಿ ಅಥವಾ ನಿಘಂಟು ಅಲ್ಲ`);
     }
 
     /**
@@ -821,6 +872,13 @@ class KannadaRuntime {
         }
         if (Array.isArray(value)) {
             return '[' + value.map(v => this.formatOutput(v)).join(', ') + ']';
+        }
+        if (value instanceof Map) {
+            const parts = [];
+            for (const [k, v] of value) {
+                parts.push(`${this.formatOutput(k)}: ${this.formatOutput(v)}`);
+            }
+            return '{' + parts.join(', ') + '}';
         }
         return String(value);
     }

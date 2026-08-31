@@ -120,7 +120,11 @@ class KannadaLexer {
             'ಮಸಾಅ': 'GCD',             // greatest common divisor
             'ಲಸಾಅ': 'LCM',             // least common multiple
             'ಅವಿಭಾಜ್ಯವೇ': 'IS_PRIME',   // isPrime(n) → ಸತ್ಯ/ಅಸತ್ಯ
-            'ಫಿಬೊನಾಚಿ': 'FIBONACCI'      // nth fibonacci number
+            'ಫಿಬೊನಾಚಿ': 'FIBONACCI',     // nth fibonacci number
+            // v2.5.0 — Dictionary (ನಿಘಂಟು) helper functions
+            'ಕೀಗಳು': 'DICT_KEYS',        // keys(dict) → list of keys
+            'ಮೌಲ್ಯಗಳು': 'DICT_VALUES',   // values(dict) → list of values
+            'ಕೀ_ಇದೆಯೇ': 'DICT_HAS'        // hasKey(dict, key) → ಸತ್ಯ/ಅಸತ್ಯ
         };
 
         // Token patterns
