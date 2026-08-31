@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, Keyboard, Copy, Trash2, X, Share2, Languages } from 'lucide-react';
+import { Play, Keyboard, Copy, Trash2, X, Share2, Languages, Download, Upload } from 'lucide-react';
 import { kannadaLipi } from '../lib/js/interpreter/index.js';
 import './CodeEditor.css';
 
@@ -69,6 +69,7 @@ const KEYBOARD_LAYOUTS = {
             { label: 'ಪರಿವರ್ತನೆ', chars: ['ಪೂರ್ಣಾಂಕ', 'ವರ್ಣಮಾಲೆ', 'ಸಂಖ್ಯೆಗೆ', 'ಪಠ್ಯಕ್ಕೆ', 'ಪ್ರಕಾರ', 'ಅಂಕಿಗಳು', 'ಸಂಖ್ಯೆಯೇ'] },
             { label: 'ಪಟ್ಟಿ', chars: ['ಏರಿಕೆ', 'ಇಳಿಕೆ', 'ಸಂಗ್ರಹಿಸು', 'ಹುಡುಕು', 'ಸೇರಿಸು', 'ತೆಗೆ', 'ವಿಲೀನ', 'ಪಟ್ಟಿಯ_ಉದ್ದ', 'ಶ್ರೇಣಿ', 'ವಿಶಿಷ್ಟ', 'ತಿರುಗಿಸು'] },
             { label: 'ಉನ್ನತ', chars: ['ನಕ್ಷೆ', 'ಶೋಧಕ', 'ಕಡಿತ'] },
+            { label: 'ನಿಘಂಟು', chars: ['ಕೀಗಳು', 'ಮೌಲ್ಯಗಳು', 'ಕೀ_ಇದೆಯೇ'] },
             { label: 'ಪಠ್ಯ', chars: ['ಜೋಡಿಸು', 'ಉದ್ದ', 'ಪ್ರತಿಬಿಂಬ', 'ಕತ್ತರಿಸು', 'ವಿಭಜಿಸು', 'ಬದಲಿಸು', 'ಒಳಗೊಂಡಿದೆ', 'ಟ್ರಿಮ್', 'ಪುನರಾವರ್ತಿಸು', 'ಪ್ಯಾಡ್', 'ಆರಂಭಿಸು', 'ಕೊನೆಗೊಳ್ಳು', 'ಸ್ಥಾನ', 'ಗಣನೆ', 'ಪದಗಳು'] },
             { label: 'ದಿನಾಂಕ', chars: ['ಇಂದು', 'ಸಮಯ', 'ವರ್ಷ', 'ತಿಂಗಳು', 'ದಿನ'] },
             { label: 'ತ್ರಿಕೋನಮಿತಿ', chars: ['ಸೈನ್', 'ಕೊಸೈನ್', 'ಟ್ಯಾನ್'] }
@@ -206,6 +207,35 @@ const CodeEditor = ({ autoDemo = false }) => {
         alert('ಕೋಡ್ ನಕಲಿಸಲಾಗಿದೆ!');
     };
 
+    const fileInputRef = useRef(null);
+
+    // Save the current program as a .kl file (download, no backend).
+    const saveFile = () => {
+        const blob = new Blob([code], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'kannada-lipi.kl';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    };
+
+    // Open a .kl (or .txt) file back into the editor.
+    const openFile = (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+            cancelDemo();
+            setCode(String(ev.target.result || ''));
+            setOutput('');
+        };
+        reader.readAsText(file);
+        e.target.value = ''; // allow re-opening the same file
+    };
+
     const shareCode = async () => {
         const url = `${window.location.origin}${window.location.pathname}?code=${encodeCode(code)}`;
         const shareData = { title: 'ಕನ್ನಡ ಲಿಪಿ', text: 'ನನ್ನ ಕನ್ನಡ ಕೋಡ್ ನೋಡಿ!', url };
@@ -295,6 +325,13 @@ const CodeEditor = ({ autoDemo = false }) => {
                             <button className="btn btn-secondary" onClick={shareCode}>
                                 <Share2 size={14} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ಹಂಚಿಕೊಳ್ಳಿ
                             </button>
+                            <button className="btn btn-secondary" onClick={saveFile} title="ಕೋಡ್ ಅನ್ನು .kl ಫೈಲ್ ಆಗಿ ಉಳಿಸಿ">
+                                <Download size={14} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ಉಳಿಸಿ
+                            </button>
+                            <button className="btn btn-secondary" onClick={() => fileInputRef.current?.click()} title=".kl ಫೈಲ್ ತೆರೆಯಿರಿ">
+                                <Upload size={14} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ತೆರೆಯಿರಿ
+                            </button>
+                            <input ref={fileInputRef} type="file" accept=".kl,.txt,text/plain" onChange={openFile} style={{ display: 'none' }} />
                             <button className="btn btn-secondary" onClick={clearCode}>
                                 <Trash2 size={14} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ಅಳಿಸಿ
                             </button>

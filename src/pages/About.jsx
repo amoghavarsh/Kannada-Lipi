@@ -8,10 +8,43 @@ import './About.css';
 
 const CHANGELOG_DATA = [
     {
+        version: "3.0.0",
+        date: "ಜುಲೈ ೨೦೨೬",
+        author: "KannadaLipi Team",
+        isLatest: true,
+        sections: [
+            {
+                title: "ಹೊಸ ವೈಶಿಷ್ಟ್ಯಗಳು (New Features)",
+                icon: "new",
+                bulletType: "added",
+                items: [
+                    { tag: "NEW", text: "ನಿಘಂಟು (Dictionary) - ಕೀ-ಮೌಲ್ಯ ದತ್ತಾಂಶ ರಚನೆ; ಕೀಗಳು(), ಮೌಲ್ಯಗಳು(), ಕೀ_ಇದೆಯೇ()", tagClass: "tag-new" },
+                    { tag: "NEW", text: "ಪ್ರಮಾಣಪತ್ರ - ಎಲ್ಲಾ ಪಾಠ ಮುಗಿಸಿದವರಿಗೆ ಡೌನ್‌ಲೋಡ್/ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ಪ್ರಮಾಣಪತ್ರ", tagClass: "tag-new" },
+                    { tag: "NEW", text: "ಫೈಲ್ ಉಳಿಸಿ/ತೆರೆಯಿರಿ - ಕೋಡ್ ಅನ್ನು .kl ಫೈಲ್ ಆಗಿ ಉಳಿಸಿ, ಮತ್ತೆ ತೆರೆಯಿರಿ", tagClass: "tag-new" },
+                    { tag: "NEW", text: "English → ಕನ್ನಡ ಟ್ರಾನ್ಸ್‌ಲಿಟರೇಶನ್ - namaskara → ನಮಸ್ಕಾರ (ಎಡಿಟರ್‌ನಲ್ಲಿ ಟಾಗಲ್)", tagClass: "tag-new" },
+                    { tag: "NEW", text: "ಇಂದಿನ ಸವಾಲು - ಪ್ರತಿದಿನ ಹೊಸ ಸವಾಲು + ಸ್ಟ್ರೀಕ್", tagClass: "tag-new" },
+                    { tag: "NEW", text: "ಕರ್ನಾಟಕ ಸಂವಾದಾತ್ಮಕ ನಕ್ಷೆ + ಭೂಗೋಳ, ಸರ್ಕಾರ, ಸಾರಿಗೆ ಮಾಹಿತಿ", tagClass: "tag-new" },
+                    { tag: "NEW", text: "೧೦ ಸುಧಾರಿತ ಕಾರ್ಯಗಳು - ಆರಂಭಿಸು, ಕೊನೆಗೊಳ್ಳು, ಸ್ಥಾನ, ಗಣನೆ, ಪದಗಳು, ಸುತ್ತು, ಮಸಾಅ, ಲಸಾಅ, ಅವಿಭಾಜ್ಯವೇ, ಫಿಬೊನಾಚಿ", tagClass: "tag-new" },
+                    { tag: "NEW", text: "ಸಂದರ್ಶಕ ಎಣಿಕೆ - ವೆಬ್‌ಸೈಟ್ ಭೇಟಿಗಳ ಲೈವ್ ಎಣಿಕೆ", tagClass: "tag-new" }
+                ]
+            },
+            {
+                title: "ಸುಧಾರಣೆಗಳು (Improvements)",
+                icon: "improved",
+                bulletType: "changed",
+                items: [
+                    { tag: "UI", text: "ಗ್ಲಾಸ್‌ಮಾರ್ಫಿಸಂ ವಿನ್ಯಾಸ - ಇಡೀ ವೆಬ್‌ಸೈಟ್‌ಗೆ ಆಧುನಿಕ ನೋಟ", tagClass: "tag-ui" },
+                    { tag: "UI", text: "ಮುಖಪುಟದಲ್ಲಿ ಎಡಿಟರ್ ಪ್ರಮುಖವಾಗಿ + ಸ್ವಯಂ-ಡೆಮೊ", tagClass: "tag-ui" },
+                    { tag: "IMPROVED", text: "ಮೊಬೈಲ್ ಯುಐ ಸುಧಾರಣೆಗಳು (ಪ್ಯಾಡಿಂಗ್, ಓವರ್‌ಫ್ಲೋ)", tagClass: "tag-improved" }
+                ]
+            }
+        ]
+    },
+    {
         version: "2.2.0",
         date: "ಫೆಬ್ರವರಿ ೨೦೨೬",
         author: "KannadaLipi Team",
-        isLatest: true,
+        isLatest: false,
         sections: [
             {
                 title: "ಹೊಸ ಕೋಡಿಂಗ್ ವೈಶಿಷ್ಟ್ಯಗಳು (New Coding Features)",

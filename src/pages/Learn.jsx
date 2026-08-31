@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import confetti from 'canvas-confetti';
 import {
     BookOpen, BarChart3, ClipboardList, Target, Terminal, Lightbulb,
     Play, CheckCircle, RotateCcw, PartyPopper, Hand, Package, Hash,
     GitBranch, Zap, FileText, Triangle, RefreshCw, Circle, Ruler,
-    Link as LinkIcon, Microscope, Repeat, Plus, Search
+    Link as LinkIcon, Microscope, Repeat, Plus, Search, Award
 } from 'lucide-react';
 import { kannadaLipi } from '../lib/js/interpreter/index.js';
 import { LESSONS } from '../data/lessons.js';
@@ -184,6 +185,14 @@ const Learn = () => {
                                 </button>
                             );
                         })}
+
+                        <NavLink
+                            to="/certificate"
+                            className={`btn btn-sm learn-cert-btn ${completedCount >= totalLessons ? 'btn-accent' : 'btn-secondary'}`}
+                        >
+                            <Award size={14} style={{ marginRight: 4, verticalAlign: 'middle' }} />
+                            {completedCount >= totalLessons ? 'ಪ್ರಮಾಣಪತ್ರ ಪಡೆಯಿರಿ 🎉' : 'ಪ್ರಮಾಣಪತ್ರ'}
+                        </NavLink>
 
                         <button className="btn btn-secondary btn-sm learn-reset-btn" onClick={resetProgress}>
                             <RotateCcw size={14} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ಪ್ರಗತಿ ರೀಸೆಟ್ ಮಾಡಿ
