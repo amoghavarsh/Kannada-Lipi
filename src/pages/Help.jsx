@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import {
     BookOpen, Zap, RefreshCw, Hash, Scale, Link as LinkIcon,
     GitBranch, Repeat, Search, Lightbulb, Menu, X, Upload, Triangle,
-    FileText, Clock, BarChart3, ClipboardList
+    FileText, Clock, BarChart3, ClipboardList, PenTool
 } from 'lucide-react';
 import { FUNCTION_CATEGORIES, OPERATORS, CONTROL_FLOW } from '../data/functions';
 import './Help.css';
 
 const FUNC_ICONS = {
     Upload, Hash, Triangle, FileText, Clock, BarChart3, RefreshCw,
-    ClipboardList, Link: LinkIcon
+    ClipboardList, Link: LinkIcon, PenTool
 };
 
 const FuncIcon = ({ iconKey, size = 16 }) => {

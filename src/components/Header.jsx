@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { NavLink } from 'react-router-dom';
-import { Link, Sparkles, Landmark, ChevronDown, HelpCircle, IndianRupee, MapPin, GraduationCap, Building2 } from 'lucide-react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { Link, Sparkles, Landmark, ChevronDown, HelpCircle, IndianRupee, MapPin, GraduationCap, Building2, Smile, Flame, Gamepad2 } from 'lucide-react';
 import VisitorCount from './VisitorCount';
+import InstallApp from './InstallApp';
 import './Header.css';
 
 const Header = () => {
     const [theme, setTheme] = useState(localStorage.getItem('kannadalipi_theme') || 'light');
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
@@ -35,14 +37,41 @@ const Header = () => {
         setIsMenuOpen(false);
     };
 
+    // Daily challenge + games share one menu entry so the header stays compact.
+    const playLinks = (
+        <>
+            <NavLink to="/challenge" className="nav-link" onClick={closeMenu}><Flame size={15} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ಇಂದಿನ ಸವಾಲು</NavLink>
+            <NavLink to="/games" className="nav-link" onClick={closeMenu}><Gamepad2 size={15} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ಆಟಗಳು</NavLink>
+        </>
+    );
+    const playActive = ['/challenge', '/games'].includes(location.pathname);
+
+    const linkHome = <NavLink to="/" className="nav-link" onClick={closeMenu}>ಮುಖಪುಟ</NavLink>;
+    const linkLearn = <NavLink to="/learn" className="nav-link" onClick={closeMenu}>ಕಲಿಯಿರಿ</NavLink>;
+    const linkKids = <NavLink to="/kids" className="nav-link nav-link-kids" onClick={closeMenu}><Smile size={15} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ಮಕ್ಕಳು</NavLink>;
+    const linkExamples = <NavLink to="/examples" className="nav-link" onClick={closeMenu}>ಉದಾಹರಣೆಗಳು</NavLink>;
+    const linkHelp = <NavLink to="/help" className="nav-link" onClick={closeMenu}>ಸಹಾಯ</NavLink>;
+
+    // Mobile: flat list (the panel scrolls).
     const navLinksCoding = (
         <>
-            <NavLink to="/" className="nav-link" onClick={closeMenu}>ಮುಖಪುಟ</NavLink>
-            <NavLink to="/learn" className="nav-link" onClick={closeMenu}>ಕಲಿಯಿರಿ</NavLink>
-            <NavLink to="/challenge" className="nav-link" onClick={closeMenu}>🔥 ಇಂದಿನ ಸವಾಲು</NavLink>
-            <NavLink to="/examples" className="nav-link" onClick={closeMenu}>ಉದಾಹರಣೆಗಳು</NavLink>
-            <NavLink to="/games" className="nav-link" onClick={closeMenu}>ಆಟಗಳು</NavLink>
-            <NavLink to="/help" className="nav-link" onClick={closeMenu}>ಸಹಾಯ</NavLink>
+            {linkHome}{linkLearn}{linkKids}{playLinks}{linkExamples}{linkHelp}
+        </>
+    );
+
+    // Desktop: challenge + games collapsed into a dropdown.
+    const navLinksCodingDesktop = (
+        <>
+            {linkHome}{linkLearn}{linkKids}
+            <div className="nav-dropdown">
+                <button className={`nav-link nav-dropdown-trigger${playActive ? ' active' : ''}`}>
+                    ಆಟ & ಸವಾಲು <ChevronDown size={14} className="nav-dropdown-caret" />
+                </button>
+                <div className="nav-dropdown-menu">
+                    {playLinks}
+                </div>
+            </div>
+            {linkExamples}{linkHelp}
         </>
     );
 
@@ -81,7 +110,7 @@ const Header = () => {
                     dropdown so the bar never overflows. */}
                 <nav className="nav nav-desktop">
                     <div className="nav-group nav-group-coding">
-                        {navLinksCoding}
+                        {navLinksCodingDesktop}
                     </div>
                     <div className="nav-divider"></div>
                     <div className="nav-group nav-group-general">
@@ -99,6 +128,7 @@ const Header = () => {
                 </nav>
 
                 <div className="header-actions">
+                    <InstallApp />
                     <VisitorCount />
                     <button
                         className={`hamburger-btn ${isMenuOpen ? 'active' : ''}`}
@@ -113,7 +143,7 @@ const Header = () => {
 
                     <button className="theme-btn" onClick={toggleTheme} title="Toggle Theme">
                         {theme === 'dark' ? (
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                                 <circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" /><line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" /><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                             </svg>
                         ) : (

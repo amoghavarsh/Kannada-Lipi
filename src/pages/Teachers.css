@@ -1,0 +1,85 @@
+.teachers-page { max-width: 1040px; }
+.teachers-h2 { font-size: 1.3rem; margin-bottom: var(--gap-md); }
+
+.track-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--gap-md);
+}
+.track-card { display: flex; flex-direction: column; gap: var(--gap-sm); border-top: 4px solid var(--k-yellow); }
+.track-card:nth-child(2) { border-top-color: #ff8c00; }
+.track-card:nth-child(3) { border-top-color: var(--k-red); }
+.track-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.track-top h3 { font-size: 1.2rem; }
+.track-top span { font-size: 0.8rem; color: var(--text-muted); }
+.track-focus { color: var(--text-secondary); font-size: 0.92rem; }
+.track-card ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.track-card ul a {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+.track-card ul a svg { color: var(--k-red); flex-shrink: 0; margin-top: 3px; }
+.track-card ul a:hover { color: var(--k-red); }
+.track-outcome { margin-top: auto; font-size: 0.88rem; color: var(--text-secondary); padding-top: var(--gap-sm); border-top: 1px dashed var(--border-glass-color); }
+
+.plan-list { list-style: none; display: flex; flex-direction: column; gap: var(--gap-sm); }
+.plan-list li { display: grid; grid-template-columns: 64px 1fr; gap: var(--gap-sm); align-items: start; }
+.plan-min {
+    text-align: center;
+    font-weight: 700;
+    padding: 6px 0;
+    border-radius: var(--radius-sm);
+    background: var(--glass-yellow);
+    color: var(--text-primary);
+}
+.plan-list p { margin: 2px 0 0; color: var(--text-secondary); font-size: 0.92rem; }
+
+.print-head { display: flex; justify-content: space-between; align-items: center; gap: var(--gap-sm); flex-wrap: wrap; margin-bottom: var(--gap-sm); }
+.print-head h2 { margin-bottom: 0; }
+
+.worksheet {
+    margin-top: var(--gap-md);
+    padding: var(--gap-md);
+    border: 2px dashed var(--border-glass-color);
+    border-radius: var(--radius-md);
+}
+.worksheet h3 { margin-bottom: var(--gap-sm); }
+.ws-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 56px);
+    grid-template-rows: repeat(5, 56px);
+    margin: var(--gap-md) 0;
+    border: 2px solid var(--text-secondary);
+    width: max-content;
+}
+.ws-cell {
+    border: 1px solid var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.ws-lines div { height: 30px; border-bottom: 1px solid var(--text-muted); }
+
+.install-row { margin: var(--gap-sm) 0 var(--gap-md); }
+.install-note { color: var(--text-secondary); font-size: 0.92rem; }
+
+@media (max-width: 860px) {
+    .track-grid { grid-template-columns: 1fr; }
+}
+
+/* Print only the worksheet section, on plain white paper */
+@media print {
+    .header, .footer, .orb, .no-print, .nav-mobile, .nav-overlay { display: none !important; }
+    body, .app-container, .main-content { background: #fff !important; color: #000 !important; }
+    .teachers-page { padding: 0; max-width: none; }
+    .glass-card { box-shadow: none !important; border: none !important; background: #fff !important; backdrop-filter: none !important; }
+    .legal-section p, .legal-list, .worksheet, .ws-cell { color: #000 !important; }
+    .ws-cell, .ws-grid, .ws-lines div { border-color: #000 !important; }
+}

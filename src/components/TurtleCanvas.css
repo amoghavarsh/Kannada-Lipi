@@ -1,0 +1,48 @@
+.turtle-canvas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-sm);
+    width: 100%;
+}
+.turtle-canvas canvas {
+    display: block;
+    max-width: 100%;
+    border-radius: var(--radius-md);
+    border: 2px solid transparent;
+    background:
+        linear-gradient(var(--bg-surface), var(--bg-surface)) padding-box,
+        linear-gradient(135deg, var(--k-yellow), var(--k-red)) border-box;
+    box-shadow: var(--shadow-sm);
+}
+.turtle-toolbar {
+    display: flex;
+    gap: var(--gap-xs);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.turtle-tool {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    min-height: 32px;
+    border-radius: 999px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.turtle-tool:hover {
+    color: var(--text-primary);
+    border-color: var(--k-yellow);
+    background: var(--glass-yellow);
+}
+.turtle-tool:focus-visible {
+    outline: 2px solid var(--k-red);
+    outline-offset: 2px;
+}
+.turtle-canvas.compact .turtle-tool span { display: none; }

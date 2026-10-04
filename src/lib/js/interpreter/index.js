@@ -5,6 +5,8 @@
 import KannadaLexer from './lexer.js';
 import KannadaParser from './parser.js';
 import KannadaRuntime from './runtime.js';
+import { friendlyError } from './errors.js';
+import { turtleResult, TURTLE_COMMAND_NAMES } from './turtle.js';
 
 class KannadaLipi {
     constructor() {
@@ -18,6 +20,12 @@ class KannadaLipi {
      * @returns {object} - Result containing output or error
      */
     execute(source) {
+        // Clear state from any previous run so a parse error never shows old output.
+        this.runtime.output = [];
+        this.runtime.variables = {};
+        this.runtime.functions = {};
+        this.runtime.turtle = null;
+        this.runtime.currentLine = null;
         try {
             // Tokenize
             const tokens = this.lexer.tokenize(source);
@@ -32,13 +40,29 @@ class KannadaLipi {
             return {
                 success: true,
                 output: output,
-                variables: { ...this.runtime.variables }
+                variables: { ...this.runtime.variables },
+                turtle: turtleResult(this.runtime.turtle)
             };
         } catch (error) {
+            const raw = error && error.message ? error.message : String(error);
+            const names = [
+                ...Object.keys(this.lexer.keywords),
+                ...TURTLE_COMMAND_NAMES,
+                ...Object.keys(this.runtime.variables || {}),
+                ...Object.keys(this.runtime.functions || {}),
+            ];
+            const friendly = friendlyError(raw, { line: this.runtime.currentLine, names });
+            // Keep whatever the program printed before failing, then the error.
+            const printed = (this.runtime.output || []).join('\n');
+            const errText = `ದೋಷ: ${friendly.message}` + (friendly.hint ? `\n💡 ಸಲಹೆ: ${friendly.hint}` : '');
             return {
                 success: false,
-                error: error.message,
-                output: `ದೋಷ: ${error.message}`
+                error: raw,
+                friendly: friendly.message,
+                hint: friendly.hint,
+                line: friendly.line,
+                output: printed ? `${printed}\n${errText}` : errText,
+                turtle: turtleResult(this.runtime.turtle)
             };
         }
     }

@@ -2,6 +2,7 @@
  * KannadaLipi Runtime - Executes AST for Kannada Programming Language
  */
 import KannadaLexer from './lexer.js';
+import { createTurtle, TURTLE_COMMANDS } from './turtle.js';
 
 
 class KannadaRuntime {
@@ -10,6 +11,9 @@ class KannadaRuntime {
         this.functions = {};
         this.output = [];
         this.lexer = new KannadaLexer();
+        this.turtle = createTurtle();
+        this.currentLine = null;
+        this.callDepth = 0;
 
         // Kannada alphabet data
         this.kannadaAlphabet = {
@@ -34,6 +38,10 @@ class KannadaRuntime {
     run(ast) {
         this.output = [];
         this.variables = {};
+        this.functions = {};
+        this.turtle = createTurtle();
+        this.currentLine = null;
+        this.callDepth = 0;
 
         try {
             for (const stmt of ast.body) {
@@ -55,8 +63,14 @@ class KannadaRuntime {
      */
     execute(node) {
         if (!node) return null;
+        if (node.line !== undefined) this.currentLine = node.line;
 
         switch (node.type) {
+            case 'Block': {
+                let last = null;
+                for (const stmt of node.body) last = this.execute(stmt);
+                return last;
+            }
             case 'Assignment':
                 return this.executeAssignment(node);
             case 'If':
@@ -142,6 +156,12 @@ class KannadaRuntime {
         const end = this.evaluate(node.end);
         let result = null;
 
+        if (typeof start !== 'number' || typeof end !== 'number' || Number.isNaN(start) || Number.isNaN(end)) {
+            throw new Error('ಪುನರಾವರ್ತನೆ ಲೂಪ್‌ಗೆ ಆರಂಭ ಮತ್ತು ಅಂತ್ಯ ಸಂಖ್ಯೆಗಳು ಬೇಕು');
+        }
+        if (end - start > 100000) {
+            throw new Error('ಪುನರಾವರ್ತನೆ ತುಂಬಾ ದೊಡ್ಡದು - ೧,೦೦,೦೦೦ ಬಾರಿಗಿಂತ ಹೆಚ್ಚು');
+        }
         for (let i = start; i <= end; i++) {
             this.variables[node.variable] = i;
 
@@ -686,6 +706,12 @@ class KannadaRuntime {
                     return this.callUserFunction(name, args);
                 }
 
+                // Turtle graphics (ಆಮೆ ಚಿತ್ರ) commands
+                if (name in TURTLE_COMMANDS) {
+                    TURTLE_COMMANDS[name](this.turtle, args);
+                    return null;
+                }
+
                 // Variable as function (like print with variable)
                 if (name === 'ಮುದ್ರಿಸು') {
                     return this.builtinPrint(args);
@@ -795,6 +821,21 @@ class KannadaRuntime {
      */
     callUserFunction(name, args) {
         const func = this.functions[name];
+        if (!func) {
+            throw new Error(`"${name}" ಎಂಬ ಕಾರ್ಯ ಕಂಡುಬಂದಿಲ್ಲ`);
+        }
+        if (this.callDepth > 500) {
+            throw new Error('ಕಾರ್ಯ ತನ್ನನ್ನು ತಾನೇ ಅತಿ ಹೆಚ್ಚು ಬಾರಿ ಕರೆಯುತ್ತಿದೆ');
+        }
+        this.callDepth++;
+        try {
+            return this.callUserFunctionInner(func, args);
+        } finally {
+            this.callDepth--;
+        }
+    }
+
+    callUserFunctionInner(func, args) {
         const previousVars = { ...this.variables };
 
         // Set parameters

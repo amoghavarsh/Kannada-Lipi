@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, Keyboard, Copy, Trash2, X, Share2, Languages, Download, Upload } from 'lucide-react';
 import { kannadaLipi } from '../lib/js/interpreter/index.js';
+import TurtleCanvas from './TurtleCanvas';
+import OutputText from './OutputText';
 import './CodeEditor.css';
 
 // Transliterate a plain English word → Kannada via Google Input Tools (free,
@@ -70,6 +72,7 @@ const KEYBOARD_LAYOUTS = {
             { label: 'ಪಟ್ಟಿ', chars: ['ಏರಿಕೆ', 'ಇಳಿಕೆ', 'ಸಂಗ್ರಹಿಸು', 'ಹುಡುಕು', 'ಸೇರಿಸು', 'ತೆಗೆ', 'ವಿಲೀನ', 'ಪಟ್ಟಿಯ_ಉದ್ದ', 'ಶ್ರೇಣಿ', 'ವಿಶಿಷ್ಟ', 'ತಿರುಗಿಸು'] },
             { label: 'ಉನ್ನತ', chars: ['ನಕ್ಷೆ', 'ಶೋಧಕ', 'ಕಡಿತ'] },
             { label: 'ನಿಘಂಟು', chars: ['ಕೀಗಳು', 'ಮೌಲ್ಯಗಳು', 'ಕೀ_ಇದೆಯೇ'] },
+            { label: 'ಆಮೆ ಚಿತ್ರ', chars: ['ಮುಂದೆ', 'ಹಿಂದೆ', 'ಬಲಕ್ಕೆ', 'ಎಡಕ್ಕೆ', 'ಬಣ್ಣ', 'ದಪ್ಪ', 'ವೃತ್ತ', 'ಚುಕ್ಕೆ', 'ಪೆನ್_ಮೇಲೆ', 'ಪೆನ್_ಕೆಳಗೆ', 'ಹೋಗು', 'ಮನೆಗೆ', 'ಹಿನ್ನೆಲೆ'] },
             { label: 'ಪಠ್ಯ', chars: ['ಜೋಡಿಸು', 'ಉದ್ದ', 'ಪ್ರತಿಬಿಂಬ', 'ಕತ್ತರಿಸು', 'ವಿಭಜಿಸು', 'ಬದಲಿಸು', 'ಒಳಗೊಂಡಿದೆ', 'ಟ್ರಿಮ್', 'ಪುನರಾವರ್ತಿಸು', 'ಪ್ಯಾಡ್', 'ಆರಂಭಿಸು', 'ಕೊನೆಗೊಳ್ಳು', 'ಸ್ಥಾನ', 'ಗಣನೆ', 'ಪದಗಳು'] },
             { label: 'ದಿನಾಂಕ', chars: ['ಇಂದು', 'ಸಮಯ', 'ವರ್ಷ', 'ತಿಂಗಳು', 'ದಿನ'] },
             { label: 'ತ್ರಿಕೋನಮಿತಿ', chars: ['ಸೈನ್', 'ಕೊಸೈನ್', 'ಟ್ಯಾನ್'] }
@@ -110,6 +113,7 @@ const CodeEditor = ({ autoDemo = false }) => {
 
     const [code, setCode] = useState(shouldDemo ? '' : (sharedOrSaved || DEMO_CODE));
     const [output, setOutput] = useState('');
+    const [turtle, setTurtle] = useState(null);
     const [shareMsg, setShareMsg] = useState('');
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
     const [activeTab, setActiveTab] = useState('letters');
@@ -176,6 +180,7 @@ const CodeEditor = ({ autoDemo = false }) => {
                 setDemoTyping(false);
                 const result = kannadaLipi.execute(DEMO_CODE);
                 setOutput(result.output);
+                setTurtle(result.turtle || null);
             }
         };
         demoTimers.current.push(setTimeout(step, 500));
@@ -193,12 +198,24 @@ const CodeEditor = ({ autoDemo = false }) => {
     const runCode = () => {
         const result = kannadaLipi.execute(code);
         setOutput(result.output);
+        setTurtle(result.turtle || null);
+    };
+
+    // Ctrl/Cmd + Enter runs the program from the keyboard.
+    const handleRunShortcut = (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+            e.preventDefault();
+            runCode();
+            return true;
+        }
+        return false;
     };
 
     const clearCode = () => {
         if (window.confirm('ಕೋಡ್ ಅಳಿಸಬೇಕೇ?')) {
             setCode('');
             setOutput('');
+            setTurtle(null);
         }
     };
 
@@ -231,6 +248,7 @@ const CodeEditor = ({ autoDemo = false }) => {
             cancelDemo();
             setCode(String(ev.target.result || ''));
             setOutput('');
+            setTurtle(null);
         };
         reader.readAsText(file);
         e.target.value = ''; // allow re-opening the same file
@@ -306,7 +324,7 @@ const CodeEditor = ({ autoDemo = false }) => {
                 <div className="editor-column">
                     <div className="editor-controls">
                         <div className="btn-group">
-                            <button className="btn btn-primary run-btn" onClick={runCode}>
+                            <button className="btn btn-primary run-btn" onClick={runCode} title="ರನ್ ಮಾಡಿ (Ctrl + Enter)">
                                 <Play size={14} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ರನ್ ಮಾಡಿ
                             </button>
                             <button
@@ -354,7 +372,8 @@ const CodeEditor = ({ autoDemo = false }) => {
                                 onChange={(e) => { cancelDemo(); setCode(e.target.value); }}
                                 onScroll={handleScroll}
                                 onMouseDown={cancelDemo}
-                                onKeyDown={(e) => { cancelDemo(); handleTranslitKey(e); }}
+                                onKeyDown={(e) => { cancelDemo(); if (!handleRunShortcut(e)) handleTranslitKey(e); }}
+                                aria-label="ಕನ್ನಡ ಲಿಪಿ ಕೋಡ್ ಎಡಿಟರ್"
                                 readOnly={demoTyping}
                                 spellCheck="false"
                                 placeholder="ಇಲ್ಲಿ ನಿಮ್ಮ ಕೋಡ್ ಬರೆಯಿರಿ..."
@@ -408,8 +427,16 @@ const CodeEditor = ({ autoDemo = false }) => {
                     <h4 className="output-label">
                         ಔಟ್‌ಪುಟ್ (Output)
                     </h4>
-                    <div className="output-screen">
-                        {output || 'ಕೋಡ್ ರನ್ ಮಾಡಿದಾಗ ಇಲ್ಲಿ ಫಲಿತಾಂಶ ಕಾಣಿಸುತ್ತದೆ...'}
+                    <div className={`output-screen${turtle ? ' has-turtle' : ''}`} aria-live="polite">
+                        {turtle && (
+                            <div className="output-turtle">
+                                <TurtleCanvas turtle={turtle} compact />
+                            </div>
+                        )}
+                        <OutputText
+                            text={output}
+                            placeholder={turtle ? '' : 'ಕೋಡ್ ರನ್ ಮಾಡಿದಾಗ ಇಲ್ಲಿ ಫಲಿತಾಂಶ ಕಾಣಿಸುತ್ತದೆ...'}
+                        />
                     </div>
                 </div>
             </div>
