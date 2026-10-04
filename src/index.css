@@ -611,3 +611,95 @@ h3 {
     .page-header-title { font-size: 1.3rem; }
     .btn { padding: 10px 14px; font-size: 0.85rem; }
 }
+
+/* ── Interpreter output: friendly errors & hints (all editors) ── */
+.out-line { white-space: pre-wrap; }
+.out-error {
+    color: #ff8a8a;
+    font-weight: 600;
+    border-left: 3px solid var(--k-red);
+    padding-left: 10px;
+    margin-top: 4px;
+}
+.out-hint {
+    margin-top: 8px;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 215, 0, 0.12);
+    border: 1px solid rgba(255, 215, 0, 0.35);
+    color: #ffe680;
+    font-family: var(--font-main);
+    font-size: 0.95em;
+}
+
+/* Frosted card with padding: kids zone, teachers and privacy pages */
+.glass-card {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(var(--glass-blur-lg, 20px));
+    backdrop-filter: blur(var(--glass-blur-lg, 20px));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow);
+    padding: var(--gap-lg);
+}
+@media (max-width: 640px) {
+    .glass-card { padding: var(--gap-md); }
+}
+
+/* Install-app button: round icon button in the header, full pill elsewhere */
+.install-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+.install-btn.icon {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.92);
+    color: #7a1010;
+    flex-shrink: 0;
+}
+.install-btn.full {
+    padding: 12px 22px;
+    border: none;
+    background: linear-gradient(135deg, var(--k-yellow), var(--k-red));
+    color: #fff;
+    font-size: 1rem;
+}
+.install-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+.install-btn:focus-visible { outline: 2px solid var(--k-red); outline-offset: 2px; }
+
+/* Offline / back-online toast */
+.offline-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: calc(100vw - 32px);
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: #1e1e2e;
+    color: #fff;
+    border: 1px solid var(--k-yellow);
+    box-shadow: var(--shadow-md);
+    font-size: 0.9rem;
+    animation: toastIn 0.3s ease;
+}
+.offline-toast svg { color: var(--k-yellow); flex-shrink: 0; }
+.offline-toast.back { border-color: #16a34a; }
+.offline-toast.back svg { color: #4ade80; }
+@keyframes toastIn { from { opacity: 0; transform: translate(-50%, 12px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@media (prefers-reduced-motion: reduce) { .offline-toast { animation: none; } }

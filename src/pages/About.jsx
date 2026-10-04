@@ -8,10 +8,46 @@ import './About.css';
 
 const CHANGELOG_DATA = [
     {
+        version: "3.1.0",
+        date: "ಅಕ್ಟೋಬರ್ ೨೦೨೬",
+        author: "KannadaLipi Team",
+        isLatest: true,
+        sections: [
+            {
+                title: "ಹೊಸ ವೈಶಿಷ್ಟ್ಯಗಳು (New Features)",
+                icon: "new",
+                bulletType: "added",
+                items: [
+                    { tag: "NEW", text: "ಮಕ್ಕಳ ಕೋಡ್ ಲೋಕ - ತರಗತಿ ೩–೮ ಮಕ್ಕಳಿಗಾಗಿ ಪ್ರತ್ಯೇಕ ವಿಭಾಗ", tagClass: "tag-new" },
+                    { tag: "NEW", text: "ಆಮೆ ಚಿತ್ರ (Turtle graphics) - ಮುಂದೆ(), ಬಲಕ್ಕೆ(), ಬಣ್ಣ(), ವೃತ್ತ() ಸೇರಿ ೧೫ ಆಜ್ಞೆಗಳು; ಎಡಿಟರ್‌ನಲ್ಲೇ ಚಿತ್ರ", tagClass: "tag-new" },
+                    { tag: "NEW", text: "ಆಮೆ ಸಾಹಸ - ಮಾವಿನ ಹಣ್ಣು, ಚೌಕ, ನಕ್ಷತ್ರ, ಕನ್ನಡ ಬಾವುಟದಂತಹ ೧೨ ಆಟದ ಹಂತಗಳು", tagClass: "tag-new" },
+                    { tag: "NEW", text: "ಬ್ಲಾಕ್ ಕೋಡಿಂಗ್ - ಕನ್ನಡ ಬ್ಲಾಕ್‌ಗಳನ್ನು ಎಳೆದು ಜೋಡಿಸಿ; ಅದೇ ಕ್ಷಣ ಕನ್ನಡ ಲಿಪಿ ಕೋಡ್ ಕಾಣುತ್ತದೆ", tagClass: "tag-new" },
+                    { tag: "NEW", text: "ಸ್ನೇಹಿ ದೋಷ ಸಂದೇಶಗಳು - ಸಾಲು ಸಂಖ್ಯೆ, ಸರಳ ಕನ್ನಡ ವಿವರಣೆ, ಸಲಹೆ ಮತ್ತು \"ನೀವು ... ಎಂದು ಬರೆಯಲು ಬಯಸಿದ್ದಿರಾ?\"", tagClass: "tag-new" },
+                    { tag: "NEW", text: "{ } ಬ್ಲಾಕ್‌ಗಳು - ಲೂಪ್, ಆದರೆ ಮತ್ತು ಕಾರ್ಯಗಳಲ್ಲಿ ಹಲವು ಸಾಲುಗಳು", tagClass: "tag-new" },
+                    { tag: "NEW", text: "ಸಹಜ ಕನ್ನಡ ಲೂಪ್ ಕ್ರಮ - ಪುನರಾವರ್ತನೆ ನ ೧ ರಿಂದ ೫ ವರೆಗೆ:", tagClass: "tag-new" },
+                    { tag: "NEW", text: "ಆಫ್‌ಲೈನ್ ಆ್ಯಪ್ - ಸ್ಥಾಪಿಸಿ, ಇಂಟರ್ನೆಟ್ ಇಲ್ಲದೆಯೂ ಕೋಡ್ ಮಾಡಿ", tagClass: "tag-new" },
+                    { tag: "NEW", text: "ಶಿಕ್ಷಕರ ಮಾರ್ಗದರ್ಶಿ - ತರಗತಿವಾರು ಪಥ, ಪಾಠ ಯೋಜನೆ, ಮುದ್ರಿಸಬಹುದಾದ ವರ್ಕ್‌ಶೀಟ್", tagClass: "tag-new" },
+                    { tag: "NEW", text: "ಗೌಪ್ಯತಾ ನೀತಿ ಮತ್ತು ಬಳಕೆಯ ನಿಯಮಗಳು - \"ನನ್ನ ಡೇಟಾ ಅಳಿಸಿ\" ಬಟನ್ ಸಹಿತ", tagClass: "tag-new" }
+                ]
+            },
+            {
+                title: "ಸುಧಾರಣೆಗಳು (Improvements)",
+                icon: "improved",
+                bulletType: "changed",
+                items: [
+                    { tag: "UI", text: "ಚಿಕ್ಕ ಹೆಡರ್ - ಇಂದಿನ ಸವಾಲು ಮತ್ತು ಆಟಗಳು ಒಂದೇ \"ಆಟ & ಸವಾಲು\" ಮೆನುವಿನಲ್ಲಿ", tagClass: "tag-ui" },
+                    { tag: "IMPROVED", text: "Ctrl + Enter ಒತ್ತಿ ಕೋಡ್ ರನ್ ಮಾಡಿ", tagClass: "tag-improved" },
+                    { tag: "FIX", text: "ಅನಂತ ಪುನರಾವರ್ತನೆ ಮತ್ತು ಅತಿ ದೊಡ್ಡ ಲೂಪ್‌ಗಳು ಬ್ರೌಸರ್ ನಿಲ್ಲಿಸುವುದಿಲ್ಲ", tagClass: "tag-fixed" },
+                    { tag: "FIX", text: "ಆವರ್ತನೆ ಲೂಪ್ ಈಗ ಅದೇ ಸಾಲಿನ ಆಜ್ಞೆಗಳನ್ನು ಮಾತ್ರ ಪುನರಾವರ್ತಿಸುತ್ತದೆ", tagClass: "tag-fixed" }
+                ]
+            }
+        ]
+    },
+    {
         version: "3.0.0",
         date: "ಜುಲೈ ೨೦೨೬",
         author: "KannadaLipi Team",
-        isLatest: true,
+        isLatest: false,
         sections: [
             {
                 title: "ಹೊಸ ವೈಶಿಷ್ಟ್ಯಗಳು (New Features)",

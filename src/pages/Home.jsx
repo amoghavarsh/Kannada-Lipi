@@ -18,6 +18,7 @@ const Home = () => {
             <section className="home-secondary text-center">
                 <div className="cta-group">
                     <NavLink to="/learn" className="btn btn-primary">ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ</NavLink>
+                    <NavLink to="/kids" className="btn btn-secondary">🐢 ಮಕ್ಕಳ ಕೋಡ್ ಲೋಕ</NavLink>
                     <NavLink to="/challenge" className="btn btn-accent">🔥 ಇಂದಿನ ಸವಾಲು</NavLink>
                     <NavLink to="/games" className="btn btn-secondary">🎮 ಆಟ ಆಡಿ</NavLink>
                 </div>

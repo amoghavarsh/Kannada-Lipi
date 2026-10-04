@@ -12,6 +12,11 @@ import NotFound from './pages/NotFound';
 import Games from './pages/Games';
 import DailyChallenge from './pages/DailyChallenge';
 import Certificate from './pages/Certificate';
+import Kids from './pages/Kids';
+import Teachers from './pages/Teachers';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+import OfflineNotice from './components/OfflineNotice';
 import Schemes from './pages/Schemes';
 import Wonders from './pages/Wonders';
 import DistrictStats from './pages/DistrictStats';
@@ -54,6 +59,10 @@ function AppShell() {
                     <Route path="/games" element={<Games />} />
                     <Route path="/challenge" element={<DailyChallenge />} />
                     <Route path="/certificate" element={<Certificate />} />
+                    <Route path="/kids" element={<Kids />} />
+                    <Route path="/teachers" element={<Teachers />} />
+                    <Route path="/privacy" element={<Privacy />} />
+                    <Route path="/terms" element={<Terms />} />
                     <Route path="/help" element={<Help />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/schemes" element={<Schemes />} />
@@ -67,6 +76,7 @@ function AppShell() {
                 </Routes>
             </main>
             <Footer />
+            <OfflineNotice />
         </div>
     );
 }

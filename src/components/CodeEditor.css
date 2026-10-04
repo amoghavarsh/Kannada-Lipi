@@ -519,3 +519,9 @@
     color: var(--text-secondary);
 }
 .translit-hint b { color: var(--text-primary); }
+
+/* Turtle drawing inside the output panel */
+.output-screen.has-turtle { overflow-y: auto; }
+.output-turtle {
+    margin-bottom: var(--gap-md);
+}

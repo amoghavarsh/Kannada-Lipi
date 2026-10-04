@@ -8,6 +8,7 @@ import {
     Link as LinkIcon, Microscope, Repeat, Plus, Search, Award
 } from 'lucide-react';
 import { kannadaLipi } from '../lib/js/interpreter/index.js';
+import OutputText from '../components/OutputText';
 import { LESSONS } from '../data/lessons.js';
 import './Learn.css';
 
@@ -283,7 +284,7 @@ const Learn = () => {
 
                             <div className="lesson-output">
                                 <span className="lesson-output-label"><Terminal size={14} style={{ marginRight: 4, verticalAlign: 'middle' }} /> ಔಟ್‌ಪುಟ್:</span>
-                                <div className="output-text">{output}</div>
+                                <div className="output-text"><OutputText text={output} /></div>
                             </div>
 
                             {showHint && (

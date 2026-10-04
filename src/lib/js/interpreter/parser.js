@@ -60,6 +60,46 @@ class KannadaParser {
 
         if (this.match('EOF')) return null;
 
+        // Remember the source line so runtime errors can point to it.
+        const line = this.current().line;
+        const stmt = this.parseStatementInner();
+        if (stmt && typeof stmt === 'object' && stmt.line === undefined) stmt.line = line;
+        return stmt;
+    }
+
+    // Parse a multi-line block: { stmt \n stmt \n ... }
+    // Lets loops, conditions and functions hold many lines.
+    parseBlock() {
+        this.expect('LBRACE');
+        const body = [];
+        while (true) {
+            while (this.match('NEWLINE')) this.advance();
+            if (this.match('RBRACE')) break;
+            if (this.match('EOF')) {
+                throw new Error(`ನಿರೀಕ್ಷಿಸಲಾಗಿದೆ RBRACE, ಆದರೆ EOF ಸಿಕ್ಕಿದೆ ಸಾಲು ${this.current().line} ರಲ್ಲಿ`);
+            }
+            const stmt = this.parseStatement();
+            if (stmt) body.push(stmt);
+        }
+        this.expect('RBRACE');
+        return body;
+    }
+
+    // Body after a ':' — either a { block } or statements on the same line.
+    parseInlineOrBlock() {
+        if (this.match('LBRACE')) return this.parseBlock();
+        // The lexer drops newlines, so "same line" is decided by line numbers.
+        const colonLine = (this.tokens[this.pos - 1] || {}).line;
+        const body = [];
+        while (!this.match('EOF') && !this.match('RBRACE') && !this.match('ELSE')
+            && (body.length === 0 || this.current().line === colonLine)) {
+            body.push(this.parseStatement());
+        }
+        return body;
+    }
+
+    parseStatementInner() {
+
         // Variable assignment: name = expression
         // A "name" may be an IDENTIFIER or a Kannada keyword used as a variable
         // (e.g. ಮೊತ್ತ = ೧೦), so we key off the "= next" shape, not the token type.
@@ -164,15 +204,25 @@ class KannadaParser {
         this.expect('IF');
         const condition = this.parseComparison();
         this.expect('COLON');
-        const consequent = this.parseStatement();
+        const consequent = this.match('LBRACE')
+            ? { type: 'Block', body: this.parseBlock() }
+            : this.parseStatement();
 
+        // Allow `ಇಲ್ಲವಾದರೆ` on the next line after a closing }
         let alternate = null;
+        let look = this.pos;
+        while (this.tokens[look] && this.tokens[look].type === 'NEWLINE') look++;
+        if (consequent && consequent.type === 'Block' && this.tokens[look] && this.tokens[look].type === 'ELSE') {
+            this.pos = look;
+        }
         if (this.match('ELSE')) {
             this.advance();
-            if (this.match('QUESTION')) {
+            if (this.match('QUESTION') || this.match('COLON')) {
                 this.advance();
             }
-            alternate = this.parseStatement();
+            alternate = this.match('LBRACE')
+                ? { type: 'Block', body: this.parseBlock() }
+                : this.parseStatement();
         }
 
         return {
@@ -191,10 +241,7 @@ class KannadaParser {
         const condition = this.parseComparison();
         this.expect('COLON');
 
-        const body = [];
-        while (!this.match('EOF') && !this.match('NEWLINE')) {
-            body.push(this.parseStatement());
-        }
+        const body = this.parseInlineOrBlock();
 
         return {
             type: 'While',
@@ -209,14 +256,24 @@ class KannadaParser {
     parseForLoop() {
         this.expect('FOR');
         const variable = this.expectName();
-        this.expect('FROM');
-        const start = this.parseExpression();
-        this.expect('TO');
-        const end = this.parseExpression();
+        let start, end;
+        if (this.match('FROM')) {
+            // Classic order: ಪುನರಾವರ್ತನೆ ನ ರಿಂದ ೧ ವರೆಗೆ ೫:
+            this.advance();
+            start = this.parseExpression();
+            this.expect('TO');
+            end = this.parseExpression();
+        } else {
+            // Natural Kannada order: ಪುನರಾವರ್ತನೆ ನ ೧ ರಿಂದ ೫ ವರೆಗೆ:
+            start = this.parseExpression();
+            this.expect('FROM');
+            end = this.parseExpression();
+            this.expect('TO');
+        }
         this.expect('COLON');
 
-        const body = [];
-        body.push(this.parseStatement());
+        // All statements on the same line (or a { block }) repeat each time.
+        const body = this.parseInlineOrBlock();
 
         return {
             type: 'For',
@@ -245,7 +302,9 @@ class KannadaParser {
         this.expect('RPAREN');
         this.expect('COLON');
 
-        const body = this.parseStatement();
+        const body = this.match('LBRACE')
+            ? { type: 'Block', body: this.parseBlock() }
+            : this.parseStatement();
 
         return {
             type: 'FunctionDef',
@@ -499,10 +558,15 @@ class KannadaParser {
 
         // Check for function call
         if (this.match('LPAREN')) {
-            this.advance();
+            const openLine = this.advance().line;
             const args = [];
 
             while (!this.match('RPAREN')) {
+                // A call never spans lines: a missing ')' is the likely mistake.
+                const cur = this.current();
+                if (cur.type === 'EOF' || (cur.line !== undefined && cur.line !== openLine)) {
+                    throw new Error(`ನಿರೀಕ್ಷಿಸಲಾಗಿದೆ RPAREN, ಆದರೆ ${cur.type === 'EOF' ? 'EOF' : 'NEWLINE'} ಸಿಕ್ಕಿದೆ ಸಾಲು ${openLine} ರಲ್ಲಿ`);
+                }
                 args.push(this.parseExpression());
                 if (this.match('COMMA')) {
                     this.advance();

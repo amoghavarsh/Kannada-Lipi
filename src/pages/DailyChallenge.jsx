@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { CalendarDays, Play, Lightbulb, CheckCircle2, Flame, Trophy, RefreshCw } from 'lucide-react';
 import { kannadaLipi } from '../lib/js/interpreter/index.js';
+import OutputText from '../components/OutputText';
 import { getDailyChallenge, dayKey, CHALLENGES } from '../data/challenges';
 import './DailyChallenge.css';
 
@@ -140,7 +141,7 @@ const DailyChallenge = () => {
                     {/* Output */}
                     <div className="challenge-output-label">ಔಟ್‌ಪುಟ್</div>
                     <div className={`challenge-output ${solved ? 'ok' : ''}`}>
-                        {output || 'ಕೋಡ್ ರನ್ ಮಾಡಿ ಫಲಿತಾಂಶ ನೋಡಿ...'}
+                        <OutputText text={output} placeholder="ಕೋಡ್ ರನ್ ಮಾಡಿ ಫಲಿತಾಂಶ ನೋಡಿ..." />
                     </div>
 
                     {solved && (

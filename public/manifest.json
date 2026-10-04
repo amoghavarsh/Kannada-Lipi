@@ -1,31 +1,43 @@
 {
   "name": "ಕನ್ನಡ ಲಿಪಿ - Kannada Programming Language",
   "short_name": "ಕನ್ನಡ ಲಿಪಿ",
-  "description": "Karnataka's first programming language in Kannada. Learn to code in your mother tongue.",
+  "description": "Karnataka's first programming language in Kannada. Learn to code in your mother tongue, with a kids' zone, turtle drawing and block coding. Works offline.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1e1e2e",
+  "background_color": "#FFFDF6",
   "theme_color": "#FFD700",
   "orientation": "any",
   "scope": "/",
   "lang": "kn",
   "categories": [
     "education",
-    "developer tools",
-    "programming"
+    "kids",
+    "developer tools"
   ],
   "icons": [
     {
-      "src": "/images/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "/images/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "maskable"
+      "purpose": "any"
     }
   ],
   "shortcuts": [
@@ -33,15 +45,40 @@
       "name": "ಕಲಿಯಿರಿ",
       "short_name": "Learn",
       "description": "Start learning Kannada programming",
-      "url": "/learn"
+      "url": "/learn",
+      "icons": [
+        {
+          "src": "/images/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "ಮಕ್ಕಳ ಕೋಡ್ ಲೋಕ",
+      "short_name": "Kids",
+      "description": "Turtle levels and block coding for children",
+      "url": "/kids",
+      "icons": [
+        {
+          "src": "/images/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     },
     {
       "name": "ಉದಾಹರಣೆಗಳು",
       "short_name": "Examples",
       "description": "View code examples",
-      "url": "/examples"
+      "url": "/examples",
+      "icons": [
+        {
+          "src": "/images/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ],
   "related_applications": [],
-  "prefer_related_applications": false
+  "prefer_related_applications": false,
+  "id": "/"
 }

@@ -158,6 +158,29 @@ export const FUNCTION_CATEGORIES = [
         ]
     },
     {
+        id: "turtle",
+        name: "ಆಮೆ ಚಿತ್ರ",
+        nameEn: "Turtle Graphics",
+        iconKey: "PenTool",
+        functions: [
+            { name: "ಮುಂದೆ", nameEn: "Forward", syntax: "ಮುಂದೆ(ಹೆಜ್ಜೆ)", description: "ಆಮೆಯನ್ನು ಮುಂದೆ ಚಲಿಸಿ ಗೆರೆ ಎಳೆಯುತ್ತದೆ", descriptionEn: "Moves the turtle forward, drawing a line", example: "ಮುಂದೆ(೧೦೦)", result: "ಗೆರೆ" },
+            { name: "ಹಿಂದೆ", nameEn: "Back", syntax: "ಹಿಂದೆ(ಹೆಜ್ಜೆ)", description: "ಆಮೆಯನ್ನು ಹಿಂದಕ್ಕೆ ಚಲಿಸುತ್ತದೆ", descriptionEn: "Moves the turtle backward", example: "ಹಿಂದೆ(೫೦)", result: "ಗೆರೆ" },
+            { name: "ಬಲಕ್ಕೆ", nameEn: "Right", syntax: "ಬಲಕ್ಕೆ(ಡಿಗ್ರಿ)", description: "ಆಮೆಯನ್ನು ಬಲಕ್ಕೆ ತಿರುಗಿಸುತ್ತದೆ", descriptionEn: "Turns right (clockwise)", example: "ಬಲಕ್ಕೆ(೯೦)", result: "ತಿರುವು" },
+            { name: "ಎಡಕ್ಕೆ", nameEn: "Left", syntax: "ಎಡಕ್ಕೆ(ಡಿಗ್ರಿ)", description: "ಆಮೆಯನ್ನು ಎಡಕ್ಕೆ ತಿರುಗಿಸುತ್ತದೆ", descriptionEn: "Turns left (anticlockwise)", example: "ಎಡಕ್ಕೆ(೪೫)", result: "ತಿರುವು" },
+            { name: "ಬಣ್ಣ", nameEn: "Colour", syntax: "ಬಣ್ಣ(\"ಹೆಸರು\")", description: "ಗೆರೆಯ ಬಣ್ಣ: ಹಳದಿ, ಕೆಂಪು, ಹಸಿರು, ನೀಲಿ, ಕಪ್ಪು, ಬಿಳಿ, ಕಿತ್ತಳೆ, ನೇರಳೆ, ಗುಲಾಬಿ, ಕಂದು, ಬೂದು, ಚಿನ್ನ, ಆಕಾಶನೀಲಿ", descriptionEn: "Pen colour by Kannada name (or #hex)", example: "ಬಣ್ಣ(\"ಕೆಂಪು\")", result: "ಕೆಂಪು ಪೆನ್" },
+            { name: "ದಪ್ಪ", nameEn: "Width", syntax: "ದಪ್ಪ(ಸಂಖ್ಯೆ)", description: "ಗೆರೆಯ ದಪ್ಪ (೧–೪೦)", descriptionEn: "Pen width (1–40)", example: "ದಪ್ಪ(೫)", result: "ದಪ್ಪ ಗೆರೆ" },
+            { name: "ಪೆನ್_ಮೇಲೆ", nameEn: "Pen up", syntax: "ಪೆನ್_ಮೇಲೆ()", description: "ಗೆರೆ ಎಳೆಯದೆ ಚಲಿಸಲು", descriptionEn: "Move without drawing", example: "ಪೆನ್_ಮೇಲೆ()", result: "-" },
+            { name: "ಪೆನ್_ಕೆಳಗೆ", nameEn: "Pen down", syntax: "ಪೆನ್_ಕೆಳಗೆ()", description: "ಮತ್ತೆ ಗೆರೆ ಎಳೆಯಲು", descriptionEn: "Start drawing again", example: "ಪೆನ್_ಕೆಳಗೆ()", result: "-" },
+            { name: "ವೃತ್ತ", nameEn: "Circle", syntax: "ವೃತ್ತ(ತ್ರಿಜ್ಯ, \"ತುಂಬು_ಬಣ್ಣ\")", description: "ಆಮೆ ಇರುವಲ್ಲಿ ವೃತ್ತ ಬಿಡಿಸುತ್ತದೆ; ಎರಡನೇ ಮೌಲ್ಯ ಐಚ್ಛಿಕ", descriptionEn: "Circle centred on the turtle; fill colour optional", example: "ವೃತ್ತ(೪೦, \"ಹಳದಿ\")", result: "ವೃತ್ತ" },
+            { name: "ಚುಕ್ಕೆ", nameEn: "Dot", syntax: "ಚುಕ್ಕೆ(ಗಾತ್ರ)", description: "ಆಮೆ ಇರುವಲ್ಲಿ ಚುಕ್ಕೆ ಇಡುತ್ತದೆ", descriptionEn: "Draws a dot", example: "ಚುಕ್ಕೆ(೧೦)", result: "ಚುಕ್ಕೆ" },
+            { name: "ಹೋಗು", nameEn: "Go to", syntax: "ಹೋಗು(x, y)", description: "ನಿರ್ದಿಷ್ಟ ಸ್ಥಾನಕ್ಕೆ ಹೋಗುತ್ತದೆ (ಮಧ್ಯ = ೦, ೦)", descriptionEn: "Moves to a point; centre is (0, 0)", example: "ಹೋಗು(೫೦, -೫೦)", result: "-" },
+            { name: "ದಿಕ್ಕು", nameEn: "Heading", syntax: "ದಿಕ್ಕು(ಡಿಗ್ರಿ)", description: "ಆಮೆಯ ದಿಕ್ಕು ನಿಗದಿ (೦ = ಮೇಲೆ)", descriptionEn: "Sets heading; 0 points up", example: "ದಿಕ್ಕು(೯೦)", result: "-" },
+            { name: "ಮನೆಗೆ", nameEn: "Home", syntax: "ಮನೆಗೆ()", description: "ಮಧ್ಯಕ್ಕೆ ಹಿಂತಿರುಗಿ ಮೇಲಕ್ಕೆ ಮುಖ ಮಾಡುತ್ತದೆ", descriptionEn: "Back to the centre, facing up", example: "ಮನೆಗೆ()", result: "-" },
+            { name: "ಹಿನ್ನೆಲೆ", nameEn: "Background", syntax: "ಹಿನ್ನೆಲೆ(\"ಬಣ್ಣ\")", description: "ಕ್ಯಾನ್ವಾಸ್ ಹಿನ್ನೆಲೆ ಬಣ್ಣ", descriptionEn: "Canvas background colour", example: "ಹಿನ್ನೆಲೆ(\"ಕಪ್ಪು\")", result: "-" },
+            { name: "ಆಮೆ_ಮರೆಮಾಡು", nameEn: "Hide turtle", syntax: "ಆಮೆ_ಮರೆಮಾಡು()", description: "ಚಿತ್ರದಲ್ಲಿ ಆಮೆಯನ್ನು ಮರೆಮಾಡುತ್ತದೆ", descriptionEn: "Hides the turtle", example: "ಆಮೆ_ಮರೆಮಾಡು()", result: "-" }
+        ]
+    },
+    {
         id: "higher-order",
         name: "ಉನ್ನತ ಪಟ್ಟಿ ಕಾರ್ಯಗಳು",
         nameEn: "Higher-Order Array Functions",
@@ -197,7 +220,8 @@ export const CONTROL_FLOW = {
         { name: "ಇಲ್ಲವಾದರೆ", nameEn: "else", syntax: "ಇಲ್ಲವಾದರೆ? ಕ್ರಿಯೆ", description: "ಷರತ್ತು ಸುಳ್ಳಾದರೆ ಕ್ರಿಯೆ ನಡೆಸುತ್ತದೆ", example: "ಇಲ್ಲವಾದರೆ? ಮುದ್ರಿಸು(\"ಚಿಕ್ಕದು\")" }
     ],
     loops: [
-        { name: "ಪುನರಾವರ್ತನೆ", nameEn: "for loop", syntax: "ಪುನರಾವರ್ತನೆ ವೇರಿ ರಿಂದ ಆರಂಭ ವರೆಗೆ ಅಂತ್ಯ : ಕ್ರಿಯೆ", description: "ನಿರ್ದಿಷ್ಟ ಸಂಖ್ಯೆಯ ಪುನರಾವರ್ತನೆ", example: "ಪುನರಾವರ್ತನೆ ಇ ರಿಂದ ೧ ವರೆಗೆ ೧೦ : ಮುದ್ರಿಸು(ಇ)" },
-        { name: "ಆವರ್ತನೆ", nameEn: "while loop", syntax: "ಆವರ್ತನೆ ಷರತ್ತು : ಕ್ರಿಯೆ", description: "ಷರತ್ತು ಸತ್ಯವಾಗಿರುವವರೆಗೆ ಪುನರಾವರ್ತನೆ", example: "ಆವರ್ತನೆ ಇ < ೧೦ : ಮುದ್ರಿಸು(ಇ)" }
+        { name: "ಪುನರಾವರ್ತನೆ", nameEn: "for loop", syntax: "ಪುನರಾವರ್ತನೆ ವೇರಿ ಆರಂಭ ರಿಂದ ಅಂತ್ಯ ವರೆಗೆ : ಕ್ರಿಯೆ", description: "ನಿರ್ದಿಷ್ಟ ಸಂಖ್ಯೆಯ ಪುನರಾವರ್ತನೆ. ಅದೇ ಸಾಲಿನ ಎಲ್ಲಾ ಆಜ್ಞೆಗಳು ಪುನರಾವರ್ತನೆಯಾಗುತ್ತವೆ. ಹಳೆಯ ಕ್ರಮ (ಇ ರಿಂದ ೧ ವರೆಗೆ ೧೦) ಸಹ ಕೆಲಸ ಮಾಡುತ್ತದೆ.", example: "ಪುನರಾವರ್ತನೆ ಇ ೧ ರಿಂದ ೪ ವರೆಗೆ : ಮುಂದೆ(೧೦೦) ಬಲಕ್ಕೆ(೯೦)" },
+        { name: "ಆವರ್ತನೆ", nameEn: "while loop", syntax: "ಆವರ್ತನೆ ಷರತ್ತು : ಕ್ರಿಯೆ", description: "ಷರತ್ತು ಸತ್ಯವಾಗಿರುವವರೆಗೆ ಪುನರಾವರ್ತನೆ", example: "ಆವರ್ತನೆ ಇ < ೧೦ : ಇ = ಇ + ೧" },
+        { name: "{ }", nameEn: "block", syntax: "... : {\n  ಸಾಲು ೧\n  ಸಾಲು ೨\n}", description: "ಹಲವು ಸಾಲುಗಳನ್ನು { } ಒಳಗೆ ಇಡಿ. ಆದರೆ, ಇಲ್ಲವಾದರೆ, ಲೂಪ್ ಮತ್ತು ಕಾರ್ಯಗಳಲ್ಲಿ ಬಳಸಬಹುದು.", example: "ಪುನರಾವರ್ತನೆ ನ ೧ ರಿಂದ ೩ ವರೆಗೆ: {\n  ಮುದ್ರಿಸು(ನ)\n  ಮುದ್ರಿಸು(ನ * ನ)\n}" }
     ]
 };
